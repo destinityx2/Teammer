@@ -1,0 +1,72 @@
+.users {
+    width: 50%;
+    margin: 30px auto 10px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #878787;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgba(105, 108, 109,  0.7);
+}
+
+tr:nth-child(2n) {
+    background: #E8E8E8;
+}
+.users td, .users th {
+    padding: 10px;
+    border-left: 1px solid #878787;
+    border-top: 1px solid #878787;
+}
+.users th {
+    border-top: none;
+}
+.users td:first-child, .users th:first-child {
+    border-left: none;
+}
+.users th:first-child {
+    border-top-left-radius: 5px;
+}
+.users th:last-child {
+    border-top-right-radius: 5px;
+}
+.uname {
+    text-align: left;
+    width: 65%;
+}
+.number {
+    width: 5%;
+    text-align: center;
+}
+.amount {
+    text-align: center;
+}
+.users a{
+    text-decoration: none;
+    color: #000;
+}
+
+.users a:hover {
+    color: #343434;
+}
+
+#navigation{
+    position: relative;
+    width: 50%;
+    margin: 30px 35% 20px 35%;
+    text-align: center;
+}
+#navigation p{
+    float: left;
+    padding-right: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+#navigation p#first{
+    padding-left: 20%;
+}
+.active{
+    text-decoration: underline;
+}
+#navigation p:hover{
+    cursor: pointer;
+    color: #343434;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="css/style.css">
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="css/Users.css">
+
+    <script type = "text/javascript" src = "js/jquery-2.2.1.min.js"></script>
+    <script type = "text/javascript" src = "js/table.js"></script>
+    <title>Users</title>
+</head>
+
+<body>
+<!--************************************* HEADER *************************************-->
+
+<div class = "main">
+    <div id="status-bar">
+        <div id="status-bar-content">
+            <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
+            <div id="status-bar-commands">
+                <p id="action-bar">
+                    <a href="index.html" title="Home">Home</a>
+                    <a href="#projects" title="Projects">Projects</a>
+                    <a href="Users.html" title="Users">Users</a>
+                    <a href="About.html" title="About">About</a>
+                    <a href="Sign_in.html" title="Sign in">Sign in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--************************************* USERS TABLE *************************************-->
+
+    <div id="tab">
+            <script>GenericTable()</script>
+    </div>
+    <div id = "navigation">
+        <p  id = first style="visibility:hidden" onclick="tab(1)"><</p>
+        <p id = active onclick="tab(1)">1</p>
+        <p  onclick="tab(2)">2</p>
+        <p  onclick="tab(3)">3</p>
+        <p>...</p>
+        <p  onclick="tab(10)">10</p>
+        <p  onclick="tab(2)">></p>
+    </div>
+
+    <div class = "h_footer"></div>
+</div>
+<!--************************************* FOOTER *************************************-->
+
+<div id="f-status-bar">
+    <div id="f-status-bar-content">
+        <p id="license">© 2016 Teammer</p>
+        <div id="f-status-bar-commands">
+            <p id="f-action-bar">
+                <a href="index.html" title="Home">Home</a>
+                <a href="#projects" title="Projects">Projects</a>
+                <a href="Users.html" title="Users">Users</a>
+                <a href="About.html" title="About">About</a>
+                <a href="Sign_in.html" title="Sign in">Sign in</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

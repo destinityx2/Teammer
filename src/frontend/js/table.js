@@ -7,7 +7,7 @@ function GenericTable ()
     for(var i = 1; i < 50 + 1; ++i)
     {
         table += ("<tr><td class='number'>" + i + "</td><td class='uname'>" +
-        "<a href='#personX' class='person'>Username</a></td><td class='amount'>m</td>" +
+        "<a href='Profile.html' class='person'>Username</a></td><td class='amount'>m</td>" +
         "<td class='amount'>k</td></tr>");
     }
     table += "</table>";
@@ -81,7 +81,7 @@ function tab(n)
     for(var i = (n * 50 - 49); i < (n * 50 + 1); ++i)
     {
         table += ("<tr><td class='number'>" + i + "</td><td class='uname'>" +
-            "<a href='#personX' class='person'>Username</a></td><td class='amount'>m</td>" +
+            "<a href='Profile.html' class='person'>Username</a></td><td class='amount'>m</td>" +
             "<td class='amount'>k</td></tr>");
     }
     table += "</table>";

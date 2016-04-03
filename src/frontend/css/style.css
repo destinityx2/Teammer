@@ -18,14 +18,14 @@ body {
 div#status-bar {
     background-color: #f8f8f8;
     z-index: 9999;
-    height: 60px;
+    height: 80px;
     width: 100%;
     box-shadow: 0 1px 1px 0 rgba(168, 168, 168, 0.6);
 }
 
 div#status-bar-content {
-    margin: 20px auto 0 auto;
-    padding-top: 5px;
+    margin: 0 auto 0 auto;
+    padding-top: 25px;
     width: 900px;
 }
 

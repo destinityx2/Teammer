@@ -29,7 +29,7 @@ function GenericTable ()
         "<p class='skills'>Skills: Android, iPhone, Java</p></td>" +
         "<td class='date'><p>25.03.16</p></td><td class='members'><p>2/4</p></td></tr>");
     }
-    table += "<tr><td colspan='3'><p id='left_arrow'><a href='#'><img class='arrow' src='img/left_arrow.png' width='15px' height='15px' alt=''>  Previos page</a></p>" +
+    table += "<tr><td colspan='3'><p id='left_arrow'><a href='#'><img class='arrow' src='img/left_arrow.png' width='15px' height='15px' alt=''>  Previous page</a></p>" +
              "<p id='right_arrow'><a href='#'>Next page  <img class='arrow' src='img/right_arrow.png' width='15px' height='15px' alt=''></a></p></td></tr>";
 
     table += "</table>";

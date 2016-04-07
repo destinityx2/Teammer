@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+
+{% load staticfiles %}
+
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/style.css' %}">
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/About.css' %}">
+
+    <title>About</title>
+</head>
+
+<body>
+    <!--************************************* HEADER *************************************-->
+
+    <div class = "main">
+        <div id="status-bar">
+            <div id="status-bar-content">
+                <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
+                <div id="status-bar-commands">
+                    <p id="action-bar">
+                        <a href="{% url 'Teammer.views.index' %}" title="Home">Home</a>
+                        <a href="{% url 'Teammer.views.projects' %}" title="Projects">Projects</a>
+                        <a href="{% url 'Teammer.views.users' %}" title="Users">Users</a>
+                        <a href="{% url 'Teammer.views.about' %}" title="About">About</a>
+                        <a href="{% url 'Teammer.views.sign_in' %}" title="Sign in">Sign in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--************************************* CONTENT-BLOCKS *************************************-->
+
+        <div id="content_blocks">
+
+            <div id = "introduction">
+                <h3> Title </h3>
+                <p id = "general">
+                    It is a long established fact that a reader will be distracted by
+                    the readable content of a page when looking at its layout. The point of
+                    using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+                    as opposed to using 'Content here, content here', making it look like readable English.
+                </p>
+            </div>
+
+            <div class = "box">
+                <div id = "img1" class = "img">
+                    <img src="{% static 'img/about1.jpg' %}" style = "width:450px; height:500px" alt="">
+                </div>
+                <div id = "text1" class = "content_block">
+                    <div class = "text">
+                        <img src="{% static 'img/free.png' %}" style = "width:40px; height:40px; margin: 65px 0 20px 0" alt="">
+                        <h4>Title</h4>
+                        <p class = "description">
+                            Lorem Ipsum is simply dummy text of the printing
+                            and typesetting industry. Lorem Ipsum has been the
+                            specimen book.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class = "box">
+                <div id = "img2" class = "img">
+                    <img src="{% static 'img/about2.jpg' %}" style = "width:450px; height:500px" alt="">
+                </div>
+                <div id = "text2" class = "content_block">
+                    <div class = "text">
+                        <img src="{% static 'img/idea.png' %}" style = "width:40px; height:40px; margin: 60px 0 20px 0" alt="">
+                        <h4>Title</h4>
+                        <p class = "description">
+                            Lorem Ipsum is simply dummy text of the printing
+                            and typesetting industry. Lorem Ipsum has been the
+                            specimen book.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class = "box">
+                <div id = "img3" class = "img">
+                    <img src="{% static 'img/about3.jpg' %}" style = "width:450px; height:500px" alt="">
+                </div>
+                <div id = "text3" class = "content_block">
+                    <div class = "text">
+                        <img src="{% static 'img/hand.png' %}" style = "width:40px; height:40px; margin: 65px 0 20px 0" alt="">
+                        <h4>Title</h4>
+                        <p class = "description">
+                            Lorem Ipsum is simply dummy text of the printing
+                            and typesetting industry. Lorem Ipsum has been the
+                            specimen book.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "h_footer"></div>
+</div>
+    <!--************************************* FOOTER *************************************-->
+
+    <div id="f-status-bar">
+        <div id="f-status-bar-content">
+            <p id="license">© 2016 Teammer</p>
+            <div id="f-status-bar-commands">
+                <p id="f-action-bar">
+                    <a href="{% url 'Teammer.views.index' %}" title="Home">Home</a>
+                    <a href="{% url 'Teammer.views.projects' %}" title="Projects">Projects</a>
+                    <a href="{% url 'Teammer.views.users' %}" title="Users">Users</a>
+                    <a href="{% url 'Teammer.views.about' %}" title="About">About</a>
+                    <a href="{% url 'Teammer.views.sign_in' %}" title="Sign in">Sign in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

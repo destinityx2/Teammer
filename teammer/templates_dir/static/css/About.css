@@ -1,0 +1,89 @@
+div#content_blocks {
+    width:900px;
+    /*height:1000px;*/
+    padding-top: -20px;
+    margin: 50px auto 80px auto;
+    display: block;
+    line-height: 30px;
+}
+
+div#introduction {
+    width: 100%;
+    display: inline-block;
+    margin: 0 auto 30px auto;
+}
+
+.box {
+    background-color: #F0F0F0;
+    width: 100%;
+    margin: 0;
+    height: 500px;
+    display: block;
+}
+
+.img {
+    width: 50%;
+    height:350px;
+}
+div#img1 {
+    float: left;
+}
+div#img2 {
+    float: right;
+}
+div#img3 {
+    float: left;
+}
+
+.content_block {
+    width: 50%;
+    margin: 0;
+    height: 350px;
+}
+div#text1 {
+    float: right;
+}
+div#text2 {
+    float: left;
+}
+div#text3 {
+    float: right;
+}
+
+p#general {
+    font-family: Arial,sans-serif ;
+    font-size: 14pt;
+    font-weight: normal;
+    color: #696969;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.description {
+    font-family: Arial,sans-serif ;
+    font-size: 12pt;
+    font-weight: normal;
+    color: #696969;
+}
+
+h3 {
+    font-family: Arial,sans-serif ;
+    font-size: 24pt;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #696969;
+}
+
+.text {
+    width: 300px;
+    margin-top: 50px;
+    margin-left:100px;
+    text-align: left;
+}
+h4 {
+    font-family: Arial,sans-serif ;
+    font-size: 18pt;
+    font-weight: bold;
+    color: #332f2c;
+    margin-bottom: 15px;
+}

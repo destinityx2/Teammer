@@ -1,0 +1,90 @@
+h2
+{
+    width: 60%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+    margin: 50px auto 0 auto;
+}
+
+.project
+{
+    background-color: #ffffff;
+    width: 80%;
+    margin: 25px auto 30px auto;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+}
+.project td{
+    padding: 30px 20px 20px;
+}
+td#first_line
+{
+    height: 35px;
+}
+
+.description
+{
+    width: 85%;
+    margin: 15px auto 15px auto;
+}
+.team{
+    width: 95%;
+    margin: 15px auto 10px auto;
+}
+.team td
+{
+    text-align: center;
+}
+.team a{
+    text-decoration: none;
+    color: #000;
+}
+.skills_required{
+    width: 85%;
+    margin: 15px auto 15px auto;
+}
+
+.project h3{
+    margin-left: 15px;
+    padding: 15px;
+    font-size: 22px;
+}
+
+
+.status{
+    float: right;
+    position: relative;
+    text-align:center;
+    width: 100px;
+    height: 30px;
+    padding-bottom: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+#Open{
+    color: #ffffff;
+    background-color: #1da229;
+}
+
+#Close{
+    margin-right: -101px;
+    color: #ffffff;
+    background-color: #d51c1c;
+    visibility: hidden;
+}
+
+.ava
+{
+    width: 150px;
+    height: 150px;
+    border-radius: 300px;
+}
+.project p{
+    color: #404040;
+    line-height: 1.5;
+}

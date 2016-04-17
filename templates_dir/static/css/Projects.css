@@ -1,4 +1,4 @@
-/*.projects {
+.projects {
     width: 75%;
     margin: 30px auto 10px auto;
     border-collapse: separate;
@@ -32,7 +32,7 @@ tr:nth-child(2n+1) {
 .projects th:last-child {
     border-top-right-radius: 5px;
 }
-*/
+
 .projects a{
     text-decoration: none;
     color: #000;
@@ -58,7 +58,7 @@ tr:nth-child(2n+1) {
 {
     text-align: center;
 }
-/*
+
 #left_arrow
 {
     float:left;
@@ -68,7 +68,7 @@ tr:nth-child(2n+1) {
 {
     float: right;
     font-size: 18px;
-}*/
+}
 
 div#projects
 {
@@ -85,6 +85,7 @@ div#projects
 .table-bordered{
     border-radius: 7px;
 }
+
 
 /******************************* SUBMIT BUTTONS *******************************/
 

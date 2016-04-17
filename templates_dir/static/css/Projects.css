@@ -1,4 +1,4 @@
-.projects {
+/*.projects {
     width: 75%;
     margin: 30px auto 10px auto;
     border-collapse: separate;
@@ -32,16 +32,16 @@ tr:nth-child(2n+1) {
 .projects th:last-child {
     border-top-right-radius: 5px;
 }
-
+*/
 .projects a{
     text-decoration: none;
     color: #000;
 }
 
 .projects h3{
-   font-size: 20px;
-   font-weight:normal;
-   padding-bottom: 10px;
+    font-size: 20px;
+    font-weight:normal;
+    padding-bottom: 10px;
 }
 
 .description
@@ -58,7 +58,7 @@ tr:nth-child(2n+1) {
 {
     text-align: center;
 }
-
+/*
 #left_arrow
 {
     float:left;
@@ -68,7 +68,7 @@ tr:nth-child(2n+1) {
 {
     float: right;
     font-size: 18px;
-}
+}*/
 
 div#projects
 {
@@ -86,10 +86,9 @@ div#projects
     border-radius: 7px;
 }
 
+/******************************* CREATE BUTTONS *******************************/
 
-/******************************* SUBMIT BUTTONS *******************************/
-
-p.create_project input{
+.create_project input{
     width: 200px;
     cursor: pointer;
     background: #1da7cf;
@@ -103,88 +102,17 @@ p.create_project input{
     border-radius: 15px;
     transition: all 0.2s linear;
 }
-p.create_project input:hover{
+.create_project input:hover{
     background: rgb(74, 179, 198);
 }
-p.create_project input:active,
-p.create_project input:focus{
+.create_project input:active,
+.create_project input:focus{
     background: rgb(40, 137, 154);
     top: 1px;
     border: 1px solid rgb(12, 76, 87);
     box-shadow: 0 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
 }
-p.create_project{
+.create_project{
     text-align: right;
     margin: 5px 0;
-=======
-.projects {
-    width: 75%;
-    margin: 30px auto 10px auto;
-    border-collapse: separate;
-    border-spacing: 0;
-    border: 1px solid #878787;
-    border-radius: 5px;
-    box-shadow: 0 0 1px rgba(105, 108, 109,  0.7);
-    font-family: Arial,sans-serif;
-    font-weight: normal;
-}
-
-tr:nth-child(2n+1) {
-    background: #E8E8E8;
-}
-.projects td, .projects th {
-    padding: 20px;
-    border-left: 1px solid #878787;
-    border-top: 1px solid #878787;
-}
-.projects th {
-    border-top: none;
-    background-color: #222;
-    color: #ffffff;
-}
-.projects td:first-child, .projects th:first-child {
-    border-left: none;
-}
-.projects th:first-child {
-    border-top-left-radius: 5px;
-}
-.projects th:last-child {
-    border-top-right-radius: 5px;
-}
-
-.projects a{
-    text-decoration: none;
-    color: #000;
-}
-
-.projects h3{
-   font-size: 20px;
-   font-weight:normal;
-   padding-bottom: 10px;
-}
-
-.description
-{
-    padding-bottom: 15px;
-    color: #444;
-}
-
-.projects .date
-{
-    text-align: center;
-}
-.projects .members
-{
-    text-align: center;
-}
-
-#left_arrow
-{
-    float:left;
-    font-size: 18px;
-}
-#right_arrow
-{
-    float: right;
-    font-size: 18px;
 }

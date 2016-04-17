@@ -29,22 +29,21 @@
 
     <!--************************************* HEADER *************************************-->
 
- <div class = "main">
-    <div id="status-bar">
-        <div id="status-bar-content">
-            <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
-            <div id="status-bar-commands">
-                <p id="action-bar">
-                    <a href="{% url 'Teammer.views.index' %}" title="Home">Home</a>
-                    <a href="{% url 'Teammer.views.projects' %}" title="Projects">Projects</a>
-                    <a href="{% url 'Teammer.views.users' %}" title="Users">Users</a>
-                    <a href="{% url 'Teammer.views.about' %}" title="About">About</a>
-                    <a href="{% url 'Teammer.views.sign_in' %}" title="Sign in">Sign in</a>
-                </p>
+    <div class = "main">
+        <div id="status-bar">
+            <div id="status-bar-content">
+                <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
+                <div id="status-bar-commands">
+                    <p id="action-bar">
+                        <a href="{% url 'backend.views.index' %}" title="Home">Home</a>
+                        <a href="{% url 'backend.views.projects' %}" title="Projects">Projects</a>
+                        <a href="{% url 'backend.views.users' %}" title="Users">Users</a>
+                        <a href="{% url 'backend.views.about' %}" title="About">About</a>
+                        <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-
     <!--************************************* SLIDER *************************************-->
 
     <div id="slider" class="owl-carousel">
@@ -103,20 +102,20 @@
 
     <!--************************************* FOOTER *************************************-->
 
-    <div id="f-status-bar">
-        <div id="f-status-bar-content">
-            <p id="license">© 2016 Teammer</p>
-            <div id="f-status-bar-commands">
-                <p id="f-action-bar">
-                    <a href="{% url 'Teammer.views.index' %}" title="Home">Home</a>
-                    <a href="{% url 'Teammer.views.projects' %}" title="Projects">Projects</a>
-                    <a href="{% url 'Teammer.views.users' %}" title="Users">Users</a>
-                    <a href="{% url 'Teammer.views.about' %}" title="About">About</a>
-                    <a href="{% url 'Teammer.views.sign_in' %}" title="Sign in">Sign in</a>
-                </p>
-            </div>
+<div id="f-status-bar">
+    <div id="f-status-bar-content">
+        <p id="license">© 2016 Teammer</p>
+        <div id="f-status-bar-commands">
+            <p id="f-action-bar">
+                <a href="{% url 'backend.views.index' %}" title="Home">Home</a>
+                <a href="{% url 'backend.views.projects' %}" title="Projects">Projects</a>
+                <a href="{% url 'backend.views.users' %}" title="Users">Users</a>
+                <a href="{% url 'backend.views.about' %}" title="About">About</a>
+                <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
+            </p>
         </div>
     </div>
+</div>
 
 </body>
 </html>

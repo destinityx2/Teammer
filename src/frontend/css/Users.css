@@ -1,4 +1,4 @@
-.users {
+/*.users {
     width: 50%;
     margin: 30px auto 10px auto;
     border-collapse: separate;
@@ -69,4 +69,21 @@ tr:nth-child(2n) {
 #navigation p:hover{
     cursor: pointer;
     color: #343434;
+}
+*/
+
+div#tab
+{
+    width: 75%;
+    margin: 20px auto 30px auto;
+}
+
+.table > thead {
+    background-color: #222;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.table-bordered{
+    border-radius: 7px;
 }

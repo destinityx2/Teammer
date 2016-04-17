@@ -88,3 +88,33 @@ td#first_line
     color: #404040;
     line-height: 1.5;
 }
+/******************************* SUBMIT BUTTONS *******************************/
+
+p.apply input{
+    width: 200px;
+    cursor: pointer;
+    background: #1da7cf;
+    padding: 8px 5px;
+    font-family: Arial,sans-serif;
+    color: #fff;
+    font-size: 24px;
+    border: 1px solid rgb(28, 108, 122);
+    margin: 25px 40% 30px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    transition: all 0.2s linear;
+}
+p.apply input:hover{
+    background: rgb(74, 179, 198);
+}
+p.apply input:active,
+p.apply input:focus{
+    background: rgb(40, 137, 154);
+    top: 1px;
+    border: 1px solid rgb(12, 76, 87);
+    box-shadow: 0 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+p.apply{
+    text-align: right;
+    margin: 5px 0;
+}

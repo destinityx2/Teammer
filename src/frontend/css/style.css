@@ -21,6 +21,7 @@ div#status-bar {
     height: 80px;
     width: 100%;
     box-shadow: 0 1px 1px 0 rgba(168, 168, 168, 0.6);
+    margin-bottom: 20px;
 }
 
 div#status-bar-content {

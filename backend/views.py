@@ -74,7 +74,6 @@ def register_project(request):
     args.update(csrf(request))
 
     if request.POST:
-
         project_name = request.POST.get('project_name')
         description = request.POST.get('description')
         skills = request.POST.get('skills')
@@ -89,7 +88,7 @@ def register_project(request):
 
         proj.save()
 
-    return render_to_response('Index.html', args)
+    return render_to_response('index.html', args)
 
 
 def project(request):

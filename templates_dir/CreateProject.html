@@ -39,7 +39,7 @@
     <!--*************************************************** CREATE PROJECT ***************************************************-->
 
     <div id="create_project" >
-        <form>
+        <form action="{% url 'backend.views.register_project' %}" method="post">
             <h1>Create Project</h1>
 
             <p>

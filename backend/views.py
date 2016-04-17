@@ -4,8 +4,9 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response, redirect
 from django.template.context_processors import csrf
 from django.template.loader import get_template
+from django.utils import timezone
 
-from backend.models import UserInfo, ProjectUsers
+from backend.models import UserInfo, ProjectUsers, Project
 
 
 def index(request):
@@ -65,6 +66,22 @@ def sign_in(request):
 def create_project(request):
     create_project = get_template('CreateProject.html')
     html = create_project.render()
+    return HttpResponse(html)
+
+
+def register_project(request):
+    project_name = request.POST.get('project_name')
+    description = request.POST.get('description')
+    skills = request.POST.get('skills')
+    num_members = request.POST.get('num_members')
+
+    proj = Project(description = description, skills = skills,
+                   publication_date = timezone.now(), max_people = int(num_members))
+
+    proj.save()
+
+    about = get_template('About.html')
+    html = about.render()
     return HttpResponse(html)
 
 

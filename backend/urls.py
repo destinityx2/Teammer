@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^profile/', profile),
     url(r'^profile_edit/', profile_edit),
     url(r'^create_project/', create_project),
+    url(r'^register_project/', register_project),
     url(r'^about/', about),
     url(r'^users/', users),
 ]

@@ -38,28 +38,29 @@
 
     <!--*************************************************** CREATE PROJECT ***************************************************-->
 
-    <div id="create_project" >
-        <form action="{% url 'backend.views.register_project' %}" method="post">
-            {% csrf_token %}
-            <h1>Create Project</h1>
+        <h1 id="project_title">Create Project</h1>
 
-            <p>
-                <input id="project_name" name="project_name" required="required" type="text" placeholder="Enter your project name"/>
-            </p>
-            <p>
-                <textarea rows="20" cols="100" name="description" required="required" placeholder="Describe your project"></textarea>
-            </p>
-            <p>
-                <textarea rows="2" cols="100" name="skills" required="required" type="text" placeholder="Skills"></textarea>
-            </p>
-            <p>
-                <input id="num_members" name="num_members" required="required" type="number" min="1" step="1" placeholder="Members"/>
-            </p>
-            <p id = "create" class="create button">
-                <input type="submit" value="Create Project"/>
-            </p>
-        </form>
-    </div>
+        <div id="create_project" >
+            <form>
+                <div>
+                    <input id="project_name" name="project_name" required="required" type="text" placeholder="Enter your project name"/>
+                </div>
+                <div>
+                    <textarea rows="20" cols="100" name="description" required="required" placeholder="Project describe"></textarea>
+                </div>
+                <div>
+                    <textarea rows="2" cols="100" name="skills" required="required"  placeholder="Required skills"></textarea>
+                </div>
+                <div id="member_button">
+                    <div>
+                        <input id="num_members" name="num_members" required="required" type="number" min="1" step="1" placeholder="Members"/>
+                    </div>
+                    <p id = "create" class="create button">
+                        <input type="submit" value="Create Project"/>
+                    </p>
+                </div>
+            </form>
+        </div>
 
     <div class = "h_footer"></div>
 </div>

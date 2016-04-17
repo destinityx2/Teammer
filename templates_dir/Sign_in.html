@@ -38,16 +38,17 @@
 
 <!--************************************* HEADER *************************************-->
 
+    <div class = "main">
         <div id="status-bar">
             <div id="status-bar-content">
                 <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
                 <div id="status-bar-commands">
                     <p id="action-bar">
-                        <a href="{% url 'Teammer.views.index' %}" title="Home">Home</a>
-                        <a href="{% url 'Teammer.views.projects' %}" title="Projects">Projects</a>
-                        <a href="{% url 'Teammer.views.users' %}" title="Users">Users</a>
-                        <a href="{% url 'Teammer.views.about' %}" title="About">About</a>
-                        <a href="{% url 'Teammer.views.sign_in' %}" title="Sign in">Sign in</a>
+                        <a href="{% url 'backend.views.index' %}" title="Home">Home</a>
+                        <a href="{% url 'backend.views.projects' %}" title="Projects">Projects</a>
+                        <a href="{% url 'backend.views.users' %}" title="Users">Users</a>
+                        <a href="{% url 'backend.views.about' %}" title="About">About</a>
+                        <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
                     </p>
                 </div>
             </div>
@@ -64,7 +65,9 @@
 <!--*********************************************** SIGN IN ***********************************************-->
 
                     <div id="login" class="animate form">
-                        <form action="{% url 'Teammer.views.sign_in' %}" method="post" >
+
+                        <form action="{% url 'backend.views.sign_in' %}" method="post" >
+
                             {% csrf_token %}
                             <h1>Sign in</h1>
                             <p class="change_link">
@@ -72,7 +75,7 @@
                                 Dont't have Teammer account?<a href="#toregister" class="to_register">Create Account</a>
                             </p>
                             <p>
-                                <input id="username" name="username" required="required" type="text" placeholder="Enter your email"/>
+                                <input id="username" name="username" required="required" type="text" placeholder="Username"/>
                             </p>
                             <p class = "error">
                                 Wrong email
@@ -84,7 +87,7 @@
                                 Wrong password
                             </p>
                             <p id = "sign" class="login button">
-                                <input type="submit" value="Sign in" />
+                                <input type="submit" name="login" value="Sign in" />
                             </p>
 
                             <!--*************************** GOOGLE BUTTON ***************************-->
@@ -118,7 +121,7 @@
 <!--*********************************************** REGISTER ***********************************************-->
 
                     <div id="register" class="animate form">
-                        <form action="{% url 'Teammer.views.sign_in' %}" method="post" >
+                        <form action="{% url 'backend.views.sign_in' %}" method="post" >
 
                             {% csrf_token %}
 
@@ -153,7 +156,7 @@
                                 Different password
                             </p>
                             <p id = "create" class="signin button">
-                                <input type="submit" value="Create account"/>
+                                <input type="submit" name="register" value="Create account"/>
                             </p>
                         </form>
                     </div>
@@ -177,11 +180,11 @@
         <p id="license">© 2016 Teammer</p>
         <div id="f-status-bar-commands">
             <p id="f-action-bar">
-                <a href="{% url 'Teammer.views.index' %}" title="Home">Home</a>
-                <a href="{% url 'Teammer.views.projects' %}" title="Projects">Projects</a>
-                <a href="{% url 'Teammer.views.users' %}" title="Users">Users</a>
-                <a href="{% url 'Teammer.views.about' %}" title="About">About</a>
-                <a href="{% url 'Teammer.views.sign_in' %}" title="Sign in">Sign in</a>
+                <a href="{% url 'backend.views.index' %}" title="Home">Home</a>
+                <a href="{% url 'backend.views.projects' %}" title="Projects">Projects</a>
+                <a href="{% url 'backend.views.users' %}" title="Users">Users</a>
+                <a href="{% url 'backend.views.about' %}" title="About">About</a>
+                <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
             </p>
         </div>
     </div>

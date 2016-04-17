@@ -22,13 +22,6 @@ import psycopg2
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', index),
-    url(r'^login/', sign_in),
-    url(r'^project/', project),
-    url(r'^projects/', projects),
-    url(r'^profile/', profile),
-    url(r'^profile_edit/', profile_edit),
-    url(r'^about/', about),
-    url(r'^users/', users),
+    url(r'^index/', include('backend.urls')),
     url(r'^accounts/', include('allauth.urls')),
 ]

@@ -48,12 +48,17 @@
             <script>GenericTable()</script>
             -->
 
+            <thead><tr><th>Projects</th><th>Publication date</th><th>Participants</th></tr></thead>
+            <tbody>
+
             {% for project in projects %}
                 <tr><td class='project_name'><h3><a href='Project.html'>{{ project.project_name }}</a></h3>
                 <p class='description'>{{ project.description }}</p>
                 <p class='skills'>{{ project.skills }}</p></td>
                 <td class='date'><p>{{ project.publication_date }}</p></td><td class='members'><p>3/4</p></td></tr>
             {% endfor %}
+
+            </tbody>
 
         </table>
         <script>

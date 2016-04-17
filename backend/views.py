@@ -90,9 +90,9 @@ def register_project(request, project_id=1):
     return render_to_response('index.html', args)
 
 
-def project(request):
+def project(request, project_id):
     args = {}
-    project_id = request.GET.get('id', '')
+    # project_id = request.GET.get('id', '')
     project = Project.objects.filter(id=project_id)[0]
 
     if project is None:
@@ -106,8 +106,6 @@ def project(request):
 
         args['cur_number'] = len(participants)
         return render_to_response('Project.html', args)
-
-    return render_to_response('Project.html', args)
 
 
 def projects(request):

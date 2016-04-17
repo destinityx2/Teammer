@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^login/', sign_in),
     url(r'^project/(?P<project_id>[0-9]+)/$', project),
     url(r'^projects/', projects),
-    url(r'^profile/', profile),
+    url(r'^profile/(?P<user_id>[0-9]+)/$', profile),
     url(r'^profile_edit/', profile_edit),
     url(r'^create_project/', create_project),
     url(r'^register_project/', register_project),

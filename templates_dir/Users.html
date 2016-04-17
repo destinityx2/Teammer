@@ -35,16 +35,25 @@
     <!--************************************* USERS TABLE *************************************-->
 
     <div id="tab">
-            <script>GenericTable()</script>
-    </div>
-    <div id = "navigation">
-        <p  id = first style="visibility:hidden" onclick="tab(1)"><</p>
-        <p class = active onclick="tab(1)">1</p>
-        <p  onclick="tab(2)">2</p>
-        <p  onclick="tab(3)">3</p>
-        <p>...</p>
-        <p  onclick="tab(10)">10</p>
-        <p  onclick="tab(2)">></p>
+        <table class = 'users'>
+        <thead><tr><th>#</th><th>Nickname</th><th>Completed projects</th><th>Abondonned projects</th></tr></thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td class='number'> {{forloop.counter}} </td>
+                    <td class='uname'>
+                        <a href="{% url 'backend.views.profile' user.id %}" class='person'>{{ user.username }}</a>
+                    </td>
+                    <td class='amount'>m</td>
+                    <td class='amount'>k</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+
+        <!--
+        <script>GenericTable()</script>
+        -->
     </div>
 
     <div class = "h_footer"></div>

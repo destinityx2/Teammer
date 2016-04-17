@@ -34,10 +34,16 @@
         </div>
 
     <!--************************************* PROFILE *************************************-->
-    <h2>ProjectName</h2>
+    <h2>{{ project_name }}</h2>
 
     <table class="project">
-        <tr><td id="first_line"><p id="Open" class="status">Open</p>   <p id="Close" class="status">Close</p></td></tr>
+        <tr><td id="first_line">
+            <form>
+                <div id = "apply" class="apply">
+                    <input type="submit" value="Apply"/>
+                </div>
+            </form>
+            <p id="Open" class="status">Open</p>   <p id="Close" class="status">Close</p></td></tr>
 
         <tr>
             <td>
@@ -62,11 +68,9 @@
                 <h3>Team ({{ cur_number }}/{{ max_number }})</h3>
                 <table class = "team">
                     <tr>
-                        {% for ather
-                        <td class = "nickname"><a href="Profile.html" class ="profile" alt="">Jessica Lin</a></td>
-                        <td class = "nickname"><a href="Profile.html" class ="profile" alt="">Jeremy Silver</a></td>
-                        <td class = "nickname"><a href="Profile.html" class ="profile" alt="">Katherine Kuan</a></td>
-                        <td class = "nickname"><a href="Profile.html" class ="profile" alt="">Chris Lei</a></td>
+                        {% for member in members %}
+                        <td class = "nickname"><a href="Profile.html" class ="profile" alt="">{{ member.first_name }} {{ member.last_name }}</a></td>
+                        {% endfor %}
                     </tr>
                     <tr>
                         <td class = "photo"><a href="Profile.html" class ="profile" alt="">

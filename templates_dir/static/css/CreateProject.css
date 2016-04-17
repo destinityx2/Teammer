@@ -1,14 +1,19 @@
 #create_project{
     width: 60%;
     max-width: 700px;
-    margin: 40px auto 20px auto;
+    margin: 40px auto 60px auto;
     text-align: center;
 }
-#create_project h1{
+h1#project_title{
+    text-align: center;
     font-family: Arial, sans-serif;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: bolder;
     margin-bottom: 10px;
+}
+#member_button{
+    width: 100%;
+    margin: 15px auto 15px auto;
 }
 /**************************************************** INPUT STYLING ****************************************************/
 
@@ -30,16 +35,17 @@ input {
 /******************************* SUBMIT BUTTONS *******************************/
 
 #create_project p.button input{
-    width: 50%;
-    left: 50%;
+    float: right;
+    width: 150px;
+    margin-right: -25px;
     cursor: pointer;
     background: #1da7cf;
     padding: 8px 5px;
     font-family: Arial,sans-serif;
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
     border: 1px solid rgb(28, 108, 122);
-    margin: 25px 20% 30px;
+    margin-top: 10px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     transition: all 0.2s linear;
@@ -56,7 +62,6 @@ input {
 }
 p.create.button{
     text-align: right;
-    margin: 5px 0;
 }
 /******************************* ALL INPUT *******************************/
 
@@ -93,11 +98,8 @@ p.create.button{
     box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.9) inset;
 }
 
-#create_project #project_name{
-    width: 400px;
-    margin: 10px auto 10px auto;
-    text-align: center;
-}
 #create_project #num_members{
+    float:left;
     width: 80px;
+    margin-top: 12px;
 }

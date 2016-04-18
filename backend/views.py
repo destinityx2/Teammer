@@ -5,7 +5,6 @@ from django.shortcuts import render_to_response, redirect
 from django.template.context_processors import csrf
 from django.template.loader import get_template
 from django.utils import timezone
-
 from backend.models import UserInfo, ProjectUsers, Project
 
 
@@ -81,7 +80,7 @@ def register_project(request, project_id=1):
 
         user = User.objects.filter(id=request.user.id)[0]
 
-        proj = Project(description = description, skills = skills,
+        proj = Project(project_name = project_name, description = description, skills = skills,
                    publication_date = timezone.now(), max_people = int(num_members))
 
         proj.creator = user
@@ -114,6 +113,13 @@ def project(request):
 def projects(request):
     args = {}
     args.update(csrf(request))
+    projects = Project.objects.all()
+    #print("XXX", projects[0])
+    # projects = [Project()]
+    #print(projects)
+
+    # print(Project.objects.all())
+    args.update({"projects": projects})
     return render_to_response('Projects.html', args)
 
 

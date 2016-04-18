@@ -1,18 +1,18 @@
 
 function GenericTable ()
 {
-    var table = new String("<table class = users>");
+    var table = new String(/*"<table class = users>"*/);
 
-    table +="<tr><th>#</th><th>Nickname</th><th>Completed projects</th><th>Abondonned projects</th></tr>";
+    table +="<thead><tr><th>#</th><th>Nickname</th><th>Completed projects</th><th>Abondonned projects</th></tr></thead><tbody>";
     for(var i = 1; i < 50 + 1; ++i)
     {
         table += ("<tr><td class='number'>" + i + "</td><td class='uname'>" +
         "<a href='Profile.html' class='person'>Username</a></td><td class='amount'>m</td>" +
         "<td class='amount'>k</td></tr>");
     }
-    table += "</table>";
-
-    document.all.tab.innerHTML = table;
+    table += "</tbody>";
+    document.write(table);
+   /* document.all.tab.innerHTML = table;*/
 }
 
 

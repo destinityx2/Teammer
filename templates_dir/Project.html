@@ -67,14 +67,10 @@
                         {% endfor %}
                     </tr>
                     <tr>
+                        { for photo in photos %}
                         <td class = "photo"><a href="Profile.html" class ="profile" alt="">
                             <img class='ava' src="{% static 'img/ava1.jpg' %}" alt=""></a></td>
-                        <td class = "photo"><a href="Profile.html" class ="profile" alt="">
-                            <img class='ava' src="{% static 'img/ava2.jpg' %}" alt=""></a></td>
-                        <td class = "photo"><a href="Profile.html" class ="profile" alt="">
-                            <img class='ava' src="{% static 'img/ava3.jpg' %}" alt=""></a></td>
-                        <td class = "photo"><a href="Profile.html" class ="profile" alt="">
-                            <img class='ava' src="{% static 'img/ava4.jpg' %}" alt=""></a></td>
+                        {% endfor %}
                     </tr>
                 </table>
             </td>

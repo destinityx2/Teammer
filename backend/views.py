@@ -104,6 +104,12 @@ def project(request, project_id):
 
         participants = ProjectUsers.objects.filter(id=project_id)
 
+        photos = []
+
+        for member in participants:
+            photos.append(UserInfo.objects.filter(id=member.id))
+
+        args['photos'] = photos
         args['cur_number'] = len(participants)
         return render_to_response('Project.html', args)
 

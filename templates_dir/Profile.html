@@ -84,7 +84,7 @@
 
                     <tr class='line'>
                         <td>
-                            <a href='#' title='Project Name' id='project_name'>{{project.project_name}}</a>
+                            <a href="{% url 'backend.views.project' project.id %}" title='Project Name' id='project_name'>{{project.project_name}}</a>
                             <p id='description'>
                                 {{project.description}}
                             </p>

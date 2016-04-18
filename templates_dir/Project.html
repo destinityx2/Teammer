@@ -43,9 +43,11 @@
     <table class="project">
         <tr><td id="first_line">
             {% if not part %}
+            <form action="{% url 'backend.views.apply_project' project_q.id %}">
                 <p class="apply_project">
-                    <a href = "{% url 'backend.views.apply_project' project_q.id %}"><input type="submit" value="Apply Project"/> </a>
+                    <input type="submit" value="Apply Project"/>
                 </p>
+            </form>
             {% endif %}
             <p id="Open" class="status">Open</p>   <p id="Close" class="status">Close</p></td></tr>
 

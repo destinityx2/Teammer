@@ -64,25 +64,32 @@ def sign_in(request):
 
 
 def create_project(request):
-    create_project = get_template('CreateProject.html')
-    html = create_project.render()
-    return HttpResponse(html)
+    args = {}
+    args.update(csrf(request))
+    return render_to_response('CreateProject.html', args)
 
 
 def register_project(request):
-    project_name = request.POST.get('project_name')
-    description = request.POST.get('description')
-    skills = request.POST.get('skills')
-    num_members = request.POST.get('num_members')
+    args = {}
+    args.update(csrf(request))
 
-    proj = Project(description = description, skills = skills,
+    if request.POST:
+
+        project_name = request.POST.get('project_name')
+        description = request.POST.get('description')
+        skills = request.POST.get('skills')
+        num_members = request.POST.get('num_members')
+
+        user = User.objects.filter(id=request.user.id)[0]
+
+        proj = Project(description = description, skills = skills,
                    publication_date = timezone.now(), max_people = int(num_members))
 
-    proj.save()
+        proj.creator = user
 
-    about = get_template('About.html')
-    html = about.render()
-    return HttpResponse(html)
+        proj.save()
+
+    return render_to_response('Index.html', args)
 
 
 def project(request):
@@ -92,9 +99,9 @@ def project(request):
 
 
 def projects(request):
-    projects_template = get_template('Projects.html')
-    html = projects_template.render()
-    return HttpResponse(html)
+    args = {}
+    args.update(csrf(request))
+    return render_to_response('Projects.html', args)
 
 
 def about(request):

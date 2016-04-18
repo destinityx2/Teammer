@@ -40,6 +40,7 @@
 
     <div id="create_project" >
         <form action="{% url 'backend.views.register_project' %}" method="post">
+            {% csrf_token %}
             <h1>Create Project</h1>
 
             <p>

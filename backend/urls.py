@@ -18,5 +18,6 @@ urlpatterns = [
     url(r'^create_project/', create_project),
     url(r'^register_project/', register_project),
     url(r'^about/', about),
+    url(r'^logout/', logout),
     url(r'^users/', users),
 ]

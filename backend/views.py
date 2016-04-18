@@ -2,6 +2,7 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, redirect
+from django.template import RequestContext
 from django.template.context_processors import csrf
 from django.template.loader import get_template
 from django.utils import timezone
@@ -9,9 +10,7 @@ from backend.models import UserInfo, ProjectUsers, Project
 
 
 def index(request):
-    index_template = get_template('index.html')
-    html = index_template.render()
-    return HttpResponse(html)
+    return render_to_response('index.html', context_instance=RequestContext(request))
 
 
 def sign_in(request):
@@ -31,9 +30,9 @@ def sign_in(request):
                 return redirect('/admin')
             else:
                 args['login_error'] = 'User not found'
-                return render_to_response('Sign_in.html', args)
+                return render_to_response('Sign_in.html', args, context_instance=RequestContext(request))
         else:
-            return render_to_response('Sign_in.html', args)
+            return render_to_response('Sign_in.html', args, context_instance=RequestContext(request))
 
     elif 'register' in request.POST:
         if request.POST:
@@ -57,15 +56,15 @@ def sign_in(request):
             else:
                 return redirect('/login')
         else:
-            return render_to_response('Sign_in.html', args)
+            return render_to_response('Sign_in.html', args, context_instance=RequestContext(request))
 
-    return render_to_response('Sign_in.html', args)
+    return render_to_response('Sign_in.html', args, context_instance=RequestContext(request))
 
 
 def create_project(request):
     args = {}
     args.update(csrf(request))
-    return render_to_response('CreateProject.html', args)
+    return render_to_response('CreateProject.html', args, context_instance=RequestContext(request))
 
 
 def register_project(request, project_id=1):
@@ -87,7 +86,7 @@ def register_project(request, project_id=1):
 
         proj.save()
 
-    return render_to_response('index.html', args)
+    return render_to_response('index.html', args, context_instance=RequestContext(request))
 
 
 def project(request, project_id):
@@ -136,7 +135,7 @@ def project(request, project_id):
         args['project_q'] = project
         args['photos'] = photos
         args['cur_number'] = len(participants)
-        return render_to_response('Project.html', args)
+        return render_to_response('Project.html', args, context_instance=RequestContext(request))
 
 
 def apply_project(request, project_id):
@@ -172,7 +171,15 @@ def projects(request):
 
     # print(Project.objects.all())
     args.update({"projects": projects})
-    return render_to_response('Projects.html', args)
+    return render_to_response('Projects.html', args, context_instance=RequestContext(request))
+
+
+def logout(request):
+    print("!!!", request.user)
+
+    if request.user.is_authenticated():
+        auth.logout(request)
+    return redirect('/index')
 
 
 def about(request):

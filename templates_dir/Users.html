@@ -32,7 +32,11 @@
                         <a href="{% url 'backend.views.projects' %}" title="Projects">Projects</a>
                         <a href="{% url 'backend.views.users' %}" title="Users">Users</a>
                         <a href="{% url 'backend.views.about' %}" title="About">About</a>
-                        <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'backend.views.logout' %}" title="Logout">Logout</a>
+                        {% else %}
+                            <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
+                        {% endif %}
                     </p>
                 </div>
             </div>

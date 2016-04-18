@@ -39,9 +39,9 @@
     <table class="project">
         <tr><td id="first_line">
             <form>
-                <div id = "apply" class="apply">
-                    <input type="submit" value="Apply"/>
-                </div>
+                <p class="apply_project">
+                    <a href = "{% url 'backend.views.apply_project' project_q.id %}"><input type="submit" value="Apply Project"/> </a>
+                </p>
             </form>
             <p id="Open" class="status">Open</p>   <p id="Close" class="status">Close</p></td></tr>
 
@@ -73,9 +73,9 @@
                         {% endfor %}
                     </tr>
                     <tr>
-                        { for photo in photos %}
+                        {% for photo in photos %}
                         <td class = "photo"><a href="Profile.html" class ="profile" alt="">
-                            <img class='ava' src="{% static 'img/ava1.jpg' %}" alt=""></a></td>
+                            <img class='ava' src="{% static '{{ member.photo }}' %}" alt=""></a></td>
                         {% endfor %}
                     </tr>
                 </table>

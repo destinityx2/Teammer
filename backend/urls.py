@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^login/', sign_in),
     url(r'^project/(?P<project_id>[0-9]+)/$', project),
+    url(r'^apply_project/(?P<project_id>[0-9]+)/$', apply_project),
     url(r'^projects/', projects),
     url(r'^profile/', profile),
     url(r'^profile_edit/', profile_edit),

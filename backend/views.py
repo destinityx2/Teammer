@@ -109,9 +109,30 @@ def project(request, project_id):
         for member in participants:
             photos.append(UserInfo.objects.filter(id=member.id))
 
+        args['project_q'] = project
         args['photos'] = photos
         args['cur_number'] = len(participants)
         return render_to_response('Project.html', args)
+
+
+def apply_project(request, project_id):
+    args = {}
+
+    user = User.objects.filter(id=request.user.id)[0]
+
+    current_num = len(ProjectUsers.objects.filter(project_id=project_id))
+    max_num = (Project.objects.filter(id=project_id)[0]).max_people
+
+    if current_num < max_num:
+        current_num += 1
+
+        new_instance = ProjectUsers()
+        new_instance.user = user
+        new_instance.project = Project.objects.filter(id=project_id)[0]
+
+        new_instance.save()
+
+    return render_to_response('Projects.html', args)
 
 
 def projects(request):

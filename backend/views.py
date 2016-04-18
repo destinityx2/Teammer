@@ -154,7 +154,7 @@ def about(request):
     return HttpResponse(html)
 
 
-def profile(request):
+def profile(request, user_id):
     profile_template = get_template('Profile.html')
     html = profile_template.render()
     return HttpResponse(html)
@@ -167,6 +167,6 @@ def profile_edit(request):
 
 
 def users(request):
-    users_template = get_template('Users.html')
-    html = users_template.render()
-    return HttpResponse(html)
+    users = User.objects.all()
+    args = {'users': users}
+    return render_to_response('Users.html', args)

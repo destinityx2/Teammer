@@ -101,13 +101,14 @@ def project(request):
         args['description'] = project.description
         args['max_number'] = project.max_people
         args['skills'] = project.skills
+        args['project_name'] = project.project_name
 
         participants = ProjectUsers.objects.filter(id=project_id)
 
         args['cur_number'] = len(participants)
-        return render_to_response('Project.html', args)
+        args['members'] = participants
 
-    return render_to_response('Project.html', args)
+        return render_to_response('Project.html', args)
 
 
 def projects(request):

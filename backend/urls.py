@@ -10,7 +10,7 @@ from backend.views import *
 urlpatterns = [
     url(r'^$', index),
     url(r'^login/', sign_in),
-    url(r'^project/', 'backend.views.project'),
+    url(r'^project/', project),
     url(r'^projects/', projects),
     url(r'^profile/', profile),
     url(r'^profile_edit/', profile_edit),

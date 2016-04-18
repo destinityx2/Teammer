@@ -38,11 +38,11 @@
 
     <table class="project">
         <tr><td id="first_line">
-            <form>
+            {% if part %}
                 <p class="apply_project">
                     <a href = "{% url 'backend.views.apply_project' project_q.id %}"><input type="submit" value="Apply Project"/> </a>
                 </p>
-            </form>
+            {% endif %}
             <p id="Open" class="status">Open</p>   <p id="Close" class="status">Close</p></td></tr>
 
         <tr>
@@ -69,13 +69,13 @@
                 <table class = "team">
                     <tr>
                         {% for member in members %}
-                        <td class = "nickname"><a href="Profile.html" class ="profile" alt="">{{ member.first_name }} {{ member.last_name }}</a></td>
+                        <td class = "nickname"><a href="Profile.html" class ="profile" alt="">{{ member.email }}</a></td>
                         {% endfor %}
                     </tr>
                     <tr>
                         {% for photo in photos %}
                         <td class = "photo"><a href="Profile.html" class ="profile" alt="">
-                            <img class='ava' src="{% static '{{ member.photo }}' %}" alt=""></a></td>
+                            <img class='ava' src="{% static 'img/user_default.png' %}" alt=""></a></td>
                         {% endfor %}
                     </tr>
                 </table>

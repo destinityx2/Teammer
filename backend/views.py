@@ -95,6 +95,19 @@ def project(request, project_id):
     # project_id = request.GET.get('id', '')
     project = Project.objects.filter(id=project_id)[0]
 
+    takes_part = False
+
+    participants = ProjectUsers.objects.filter(project=project)
+    ids = []
+
+    for item in participants:
+        ids.append(item.user.id)
+
+    if request.user.id in ids:
+        takes_part = True
+
+    args['part'] = takes_part
+
     if project is None:
         return redirect('/index')
     else:
@@ -102,13 +115,26 @@ def project(request, project_id):
         args['max_number'] = project.max_people
         args['skills'] = project.skills
 
-        participants = ProjectUsers.objects.filter(id=project_id)
+        participants = ProjectUsers.objects.filter(project=project)
 
         photos = []
+        members = []
 
         for member in participants:
-            photos.append(UserInfo.objects.filter(id=member.id))
+            photo = UserInfo.objects.filter(id=member.id)
+            user = User.objects.filter(id=member.id)
 
+            if not photo:
+                photos.append('img/user_default.png')
+            else:
+                photos.append(UserInfo.objects.filter(id=member.id)[0].photo)
+
+            if user:
+                members.append(user[0])
+            else:
+                pass
+
+        args['members'] = members
         args['project_q'] = project
         args['photos'] = photos
         args['cur_number'] = len(participants)
@@ -123,6 +149,9 @@ def apply_project(request, project_id):
     current_num = len(ProjectUsers.objects.filter(project_id=project_id))
     max_num = (Project.objects.filter(id=project_id)[0]).max_people
 
+    project = Project.objects.filter(id=project_id)
+    participants = ProjectUsers.objects.filter(project=project)
+
     if current_num < max_num:
         current_num += 1
 
@@ -132,7 +161,7 @@ def apply_project(request, project_id):
 
         new_instance.save()
 
-    return render_to_response('Projects.html', args)
+    return redirect('/index/projects')
 
 
 def projects(request):

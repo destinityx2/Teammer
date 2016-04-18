@@ -40,7 +40,8 @@
 
         <div id="create_project" >
             <h1 id="project_title">Create Project</h1>
-            <form>
+            <form action="{% url 'backend.views.register_project' %}" method="post">
+                {% csrf_token %}
                 <div>
                     <input id="project_name" name="project_name" required="required" type="text" placeholder="Enter your project name"/>
                 </div>

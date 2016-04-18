@@ -39,22 +39,14 @@
         <div id = "profInformation">
 
             <div id = "ava">
-                <img class='avatar' src="{% static 'img/avatar.png' %}" alt="">
+                <img class='avatar' src="{% static user.userinfo.photo %}" alt="">
             </div>
 
             <div id = "personal_data">
-                <h2>Katherine Kuan</h2>
+                <h2>{{ user.username }}</h2>
 
                 <p id = "about">
-                    Ph.D plus 8 years of industry experience, specializing in touch sensing, image and video processing algorithms.
-                    <br>
-                    Proven record of successfully delivering algorithms that were used by customers and went to mass production.
-                    <br>
-                    Experience in working with customers, as well as different internal engineering teams.
-                    <br>
-                    Strong analytical and problem solving skills.
-                    <br>
-                    Hands-on experience working with embedded systems.
+                    {{ user.userinfo.description }}
                 </p>
             </div>
 
@@ -67,9 +59,9 @@
 
         <div id = "information">
             <div id = "contacts">
-                <p>email: katherine.kuan@gmail.com</p>
-                <p>phone: 89276190531</p>
-                <p>country: Canada</p>
+                <p>email: {{user.email}}</p>
+                <p>phone: {{user.userinfo.phone}}</p>
+                <p>country: {{user.userinfo.country}}</p>
             </div>
 
             <table id = "statistics">
@@ -84,7 +76,20 @@
                     <th id ="project">Projects</th>
                     <th id = "more_project"><a href = "#" title = "MoreProject" >More projects</a></th>
                 </tr>
+                {% for project in user.project_set.all %}
 
+                    <tr class='line'>
+                        <td>
+                            <a href='#' title='Project Name' id='project_name'>{{project.project_name}}</a>
+                            <p id='description'>
+                                {{project.description}}
+                            </p>
+                        </td>
+                    </tr>
+
+                {% endfor %}
+
+                <!--
                 <script>
                     for(var i =0; i < 3; ++i){
                         document.write("<tr class='line'><td><a href='#' title='Project Name' id='project_name'>Project name</a>" +
@@ -92,6 +97,7 @@
                                 " been the specimen book.</p></td><td></td>");
                     }
                 </script>
+                -->
             </table>
         </div>
 

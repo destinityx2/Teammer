@@ -12,8 +12,8 @@ class UserInfo(models.Model):
 
 class Project(models.Model):
     project_name = models.CharField(max_length=250, default='')
-    description = models.CharField(max_length=250, default='')
-    skills = models.CharField(max_length=250, default='')
+    description = models.CharField(max_length=2000, default='')
+    skills = models.CharField(max_length=2000, default='')
     creator = models.ForeignKey(User)
     publication_date = models.DateField(auto_now_add=True)
     max_people = models.IntegerField()

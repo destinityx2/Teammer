@@ -50,7 +50,7 @@ def sign_in(request):
             if password == password_confirm:
                 user = User.objects.create_user(username, email, password)
                 user.save()
-                userinfo = UserInfo(user = user)
+                userinfo = UserInfo(user=user)
                 userinfo.save()
                 print(user)
                 return redirect('/index')
@@ -184,9 +184,10 @@ def about(request):
 
 
 def profile(request, user_id):
-    profile_template = get_template('Profile.html')
-    html = profile_template.render()
-    return HttpResponse(html)
+    user = User.objects.filter(id=user_id)[0]
+    print(dir(user))
+    args = {'user': user}
+    return render_to_response('Profile.html', args)
 
 
 def profile_edit(request):

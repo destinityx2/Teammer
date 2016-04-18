@@ -105,7 +105,7 @@ def project(request, project_id):
     for item in participants:
         ids.append(item.user.id)
 
-    if request.user.id in ids:
+    if request.user.id or len(participants) == project.max_people in ids:
         takes_part = True
 
     args['part'] = takes_part
@@ -116,8 +116,6 @@ def project(request, project_id):
         args['description'] = project.description
         args['max_number'] = project.max_people
         args['skills'] = project.skills
-
-        participants = ProjectUsers.objects.filter(project=project)
 
         photos = []
         members = []

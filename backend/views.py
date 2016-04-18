@@ -183,25 +183,21 @@ def logout(request):
 
 
 def about(request):
-    about_template = get_template('About.html')
-    html = about_template.render()
-    return HttpResponse(html)
+    return render_to_response('About.html', context_instance=RequestContext(request))
 
 
 def profile(request, user_id):
     user = User.objects.filter(id=user_id)[0]
     print(dir(user))
     args = {'user': user}
-    return render_to_response('Profile.html', args)
+    return render_to_response('Profile.html', args, context_instance=RequestContext(request))
 
 
 def profile_edit(request):
-    profile_logged_in = get_template('Profile_SignIn.html')
-    html = profile_logged_in.render()
-    return HttpResponse(html)
+    return render_to_response('Profile_SignIn.html', context_instance=RequestContext(request))
 
 
 def users(request):
     users = User.objects.all()
     args = {'users': users}
-    return render_to_response('Users.html', args)
+    return render_to_response('Users.html', args, context_instance=RequestContext(request))

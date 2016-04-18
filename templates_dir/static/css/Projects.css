@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*.projects {
     width: 75%;
     margin: 30px auto 10px auto;
@@ -115,4 +116,76 @@ p.create_project input:focus{
 p.create_project{
     text-align: right;
     margin: 5px 0;
+=======
+.projects {
+    width: 75%;
+    margin: 30px auto 10px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #878787;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgba(105, 108, 109,  0.7);
+    font-family: Arial,sans-serif;
+    font-weight: normal;
+}
+
+tr:nth-child(2n+1) {
+    background: #E8E8E8;
+}
+.projects td, .projects th {
+    padding: 20px;
+    border-left: 1px solid #878787;
+    border-top: 1px solid #878787;
+}
+.projects th {
+    border-top: none;
+    background-color: #222;
+    color: #ffffff;
+}
+.projects td:first-child, .projects th:first-child {
+    border-left: none;
+}
+.projects th:first-child {
+    border-top-left-radius: 5px;
+}
+.projects th:last-child {
+    border-top-right-radius: 5px;
+}
+
+.projects a{
+    text-decoration: none;
+    color: #000;
+}
+
+.projects h3{
+   font-size: 20px;
+   font-weight:normal;
+   padding-bottom: 10px;
+}
+
+.description
+{
+    padding-bottom: 15px;
+    color: #444;
+}
+
+.projects .date
+{
+    text-align: center;
+}
+.projects .members
+{
+    text-align: center;
+}
+
+#left_arrow
+{
+    float:left;
+    font-size: 18px;
+}
+#right_arrow
+{
+    float: right;
+    font-size: 18px;
+>>>>>>> 9c6cabfc31199fe901be05d610bbbfaabab0bbe7
 }

@@ -2,19 +2,23 @@
 
 {% load staticfiles %}
 
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/style.css' %}">
-    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/Projects.css' %}">
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/CreateProject.css' %}">
 
     <script type = "text/javascript" src = "{% static 'js/jquery-2.2.1.min.js' %}"></script>
-    <script type = "text/javascript" src = "{% static 'js/projects.js' %}"></script>
-    <title>Projects</title>
+
+    <title>Create Project</title>
 </head>
 
 <body>
-<!--************************************* HEADER *************************************-->
+
+<div class = "main">
+
+    <!--************************************* HEADER *************************************-->
 
     <div class = "main">
         <div id="status-bar">
@@ -32,29 +36,34 @@
             </div>
         </div>
 
-    <!--************************************* PROJECTS TABLE *************************************-->
+    <!--*************************************************** CREATE PROJECT ***************************************************-->
 
-    <div id = "projects">
-        <table id = "project" class="table table-striped table-bordered" cellspacing="0" width="100%">
-            <script>GenericTable()</script>
-        </table>
-        <script>
-            $(document).ready(function() {
-                $('#project').DataTable( {
-                    "pagingType": "full_numbers"
-                } );
-            } );
-        </script>
+    <div id="create_project" >
+        <form>
+            <h1>Create Project</h1>
+
+            <p>
+                <input id="project_name" name="project_name" required="required" type="text" placeholder="Enter your project name"/>
+            </p>
+            <p>
+                <textarea rows="20" cols="100" name="description" required="required" placeholder="Describe your project"></textarea>
+            </p>
+            <p>
+                <textarea rows="2" cols="100" name="skills" required="required" type="text" placeholder="Skills"></textarea>
+            </p>
+            <p>
+                <input id="num_members" name="num_members" required="required" type="number" min="1" step="1" placeholder="Members"/>
+            </p>
+            <p id = "create" class="create button">
+                <input type="submit" value="Create Project"/>
+            </p>
+        </form>
     </div>
-    <form>
-        <p class="create_project">
 
-            <input type="submit" value="Create Project"/>
-        </p>
-    </form>
     <div class = "h_footer"></div>
-    </div>
-<!--************************************* FOOTER *************************************-->
+</div>
+
+    <!--************************************* FOOTER *************************************-->
 
 <div id="f-status-bar">
     <div id="f-status-bar-content">

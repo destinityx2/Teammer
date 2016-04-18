@@ -34,7 +34,7 @@
         </div>
 
     <!--************************************* PROFILE *************************************-->
-    <h2>Web ePub Reader</h2>
+    <h2>ProjectName</h2>
 
     <table class="project">
         <tr><td id="first_line"><p id="Open" class="status">Open</p>   <p id="Close" class="status">Close</p></td></tr>
@@ -43,26 +43,7 @@
             <td>
                 <h3>Project description</h3>
                 <p class = "description">
-                    We have a project which is about developing a proof of concept (POC) of a web based .epub reader. It is mandatory for the reader to render the ePub files on all kind of devices, OS and browsers:
-                    - Devices - mobile, tablet, desktop
-                    - OS - Windows, Mac, Chromebook, Ubuntu
-                    - Browsers - Chrome, Safari, Firefox, IE 9+, Opera
-                    <br><br>
-                    Here is a Brief info on the project:<br>
-                    https://docs.google.com/document/d/1CFY0lSXSpDLBLeYgmy67s6OlP9t4ZEgN-tcohYJGe3c/edit?usp=sharing
-                    <br><br>
-                    Please suggest on what technologies do you suggest to use for the development. We can suggest these, but you are welcome to suggest others:
-                    - ePub.js
-                    - Monocle (https://github.com/joseph/Monocle)
-                    - Custom solution where the epub format is “converted” - for example the HTML/CSS content is extracted from the files and displayed as part of the reader’s HTML page
-                    <br><br>
-                    Here is what has been done by now by our internal developer with ePub.js (It is not mandatory to proceed with ePub.js library): epub.rainbowriders.dk
-                    <br><br>
-                    The main issues that we have by now are:
-                    - It takes a lot of time to generate the total number of pages , which makes the overall performance of the viewer too slow
-                    - The solution still doesn’t work on IE9+
-                    - The library doesn’t seem flexible enough for the features in the POC phase 2
-
+                    {{ description }}
                 </p>
             </td>
         </tr>
@@ -71,16 +52,17 @@
             <td>
                 <h3>Skills required</h3>
                 <p class = "skills_required">
-                    CSS, HTML5, Javascript
+                    {{ skills }}
                 </p>
             </td>
         </tr>
 
         <tr>
             <td>
-                <h3>Team (4/4)</h3>
+                <h3>Team ({{ cur_number }}/{{ max_number }})</h3>
                 <table class = "team">
                     <tr>
+                        {% for ather
                         <td class = "nickname"><a href="Profile.html" class ="profile" alt="">Jessica Lin</a></td>
                         <td class = "nickname"><a href="Profile.html" class ="profile" alt="">Jeremy Silver</a></td>
                         <td class = "nickname"><a href="Profile.html" class ="profile" alt="">Katherine Kuan</a></td>

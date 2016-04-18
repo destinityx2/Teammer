@@ -7,6 +7,7 @@ class UserInfo(models.Model):
     description = models.CharField(max_length=1000, default='')
     phone = models.CharField(max_length=15, default='')
     country = models.CharField(max_length=20, default='')
+    photo = models.URLField(default='img/user_default.png')
 
 
 class Project(models.Model):
@@ -18,6 +19,6 @@ class Project(models.Model):
 
 
 class ProjectUsers(models.Model):
-    user = models.OneToOneField(User)
-    project = models.OneToOneField(Project)
+    user = models.ForeignKey(User)
+    project = models.ForeignKey(Project)
     start_date = models.DateField(auto_now_add=True)

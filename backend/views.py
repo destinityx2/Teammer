@@ -69,7 +69,7 @@ def create_project(request):
     return render_to_response('CreateProject.html', args)
 
 
-def register_project(request):
+def register_project(request, project_id=1):
     args = {}
     args.update(csrf(request))
 
@@ -92,9 +92,23 @@ def register_project(request):
 
 
 def project(request):
-    project_template = get_template('Project.html')
-    html = project_template.render()
-    return HttpResponse(html)
+    args = {}
+    project_id = request.GET.get('id', '')
+    project = Project.objects.filter(id=project_id)[0]
+
+    if project is None:
+        return redirect('/index')
+    else:
+        args['description'] = project.description
+        args['max_number'] = project.max_people
+        args['skills'] = project.skills
+
+        participants = ProjectUsers.objects.filter(id=project_id)
+
+        args['cur_number'] = len(participants)
+        return render_to_response('Project.html', args)
+
+    return render_to_response('Project.html', args)
 
 
 def projects(request):

@@ -28,7 +28,7 @@ def sign_in(request):
             if user is not None:
                 auth.login(request, user)
                 print("success")
-                return redirect('/admin')
+                return redirect('/index')
             else:
                 args['login_error'] = 'User not found'
                 return render_to_response('Sign_in.html', args)
@@ -48,14 +48,15 @@ def sign_in(request):
             print(email)
 
             if password == password_confirm:
+                # TODO: Обработать ситуацию, когда пользователь уже существует
                 user = User.objects.create_user(username, email, password)
                 user.save()
                 userinfo = UserInfo(user=user)
                 userinfo.save()
                 print(user)
-                return redirect('/index')
+                return redirect('/index/login')
             else:
-                return redirect('/login')
+                return redirect('/index/register')
         else:
             return render_to_response('Sign_in.html', args)
 
@@ -87,7 +88,8 @@ def register_project(request, project_id=1):
 
         proj.save()
 
-    return render_to_response('index.html', args)
+    # return render_to_response('index.html', args)
+    return redirect('/index/project/{}/'.format(project_id))
 
 
 def project(request, project_id):

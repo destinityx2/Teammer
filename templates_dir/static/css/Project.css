@@ -91,7 +91,7 @@ td#first_line
 
 /******************************* SUBMIT BUTTONS *******************************/
 
-.apply input{
+.apply_project input{
     float: left;
     width: 150px;
     cursor: pointer;
@@ -105,17 +105,17 @@ td#first_line
     border-radius: 15px;
     transition: all 0.2s linear;
 }
-.apply input:hover{
+.apply_project input:hover{
     background: rgb(74, 179, 198);
 }
-.apply input:active,
-.apply input:focus{
+.apply_project input:active,
+.apply_project input:focus{
     background: rgb(40, 137, 154);
     top: 1px;
     border: 1px solid rgb(12, 76, 87);
     box-shadow: 0 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
 }
-.apply{
+.apply_project{
     text-align: right;
     margin: 5px 0;
 }

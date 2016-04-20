@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<!-- ************************************ GOOGLE ************************************
+
+     client ID: 1068644231553-ho7nejpo5s54jv6slej0thc49gm6jakf.apps.googleusercontent.com
+     client secret: MEh8CicftdoM8gZAZ5TNCn39
+
+     ******************************************************************************** -->
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!--************************************* GOOGLE ********************************************************-->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+
+    <!--*****************************************************************************************************-->
+
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="css/style.css">
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="css/Sign_in.css">
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="css/animate-custom.css">
+
+    <script type = "text/javascript" src = "js/jquery-2.2.1.min.js"></script>
+    <script type = "text/javascript" src = "js/fb_script.js"></script>
+    <script type = "text/javascript" src = "js/google_script.js"></script>
+
+    <title>Sign in</title>
+</head>
+
+<body>
+
+<div class = "main">
+    <div class="container">
+
+<!--************************************* HEADER *************************************-->
+
+        <div id="status-bar">
+            <div id="status-bar-content">
+                <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
+                <div id="status-bar-commands">
+                    <p id="action-bar">
+                        <a href="index.html" title="Home">Home</a>
+                        <a href="Projects.html" title="Projects">Projects</a>
+                        <a href="Users.html" title="Users">Users</a>
+                        <a href="About.html" title="About">About</a>
+                        <a href="Sign_in.html" title="Sign in">Sign in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+<!--*************************************************** SIGN IN & REGISTER FORMS ***************************************************-->
+
+        <section>
+            <div id="container_forms" >
+                <a class="change_forms" id="toregister"></a>
+                <a class="change_forms" id="tologin"></a>
+                <div id="wrapper">
+
+<!--*********************************************** SIGN IN ***********************************************-->
+
+                    <div id="login" class="animate form">
+                        <form>
+                            <h1>Sign in</h1>
+                            <p class="change_link">
+                                Sign in to your account <br>
+                                Dont't have Teammer account?<a href="#toregister" class="to_register">Create Account</a>
+                            </p>
+                            <p>
+                                <input id="username" name="username" required="required" type="text" placeholder="Enter your email"/>
+                            </p>
+                            <p class = "error">
+                                Wrong email
+                            </p>
+                            <p>
+                                <input id="password" name="password" required="required" type="password" placeholder="Enter your password" />
+                            </p>
+                            <p class = "error">
+                                Wrong password
+                            </p>
+                            <p id = "sign" class="login button">
+                                <input type="submit" value="Sign in" />
+                            </p>
+
+                            <!--*************************** GOOGLE BUTTON ***************************-->
+
+                            <div id="gSignInWrapper">
+
+                                <div id="customBtn" class="customGPlusSignIn">
+                                    <span class="icon" style = "background: url('img/g+.png') transparent 5px 50% no-repeat;"></span>
+                                    <span class="label">Sign in with</span>
+                                    <span class="buttonText">Google</span>
+                                </div>
+                            </div>
+                            <div id="name"></div>
+                            <script>startApp();</script>
+
+                            <!--*************************** FACEBOOK BUTTON ***************************-->
+
+                            <div id="fb-root"></div>
+                            <a href="#" id = "fbButton" onclick="doLogin();return false;">
+                                <span class="icon" style = "background: url('img/facebook.png') transparent 5px 50% no-repeat;"></span>
+                                <span class = "intr">Sign in with</span>
+                                <span class = "fb">Facebook</span>
+                            </a>
+                            <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+                            <!--**********************************************************************-->
+
+                        </form>
+                    </div>
+
+<!--*********************************************** REGISTER ***********************************************-->
+
+                    <div id="register" class="animate form">
+                        <form>
+                            <h1> Create account </h1>
+                            <p class="change_link">
+                                Already have an Teammer account?
+                                <a href="#tologin" class="to_subscribe"> Sign in </a>
+                            </p>
+                            <p>
+                                <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="Username" />
+                            </p>
+                            <p class = "error">
+                                This username is already used
+                            </p>
+                            <p>
+                                <input id="emailsignup" name="emailsignup" required="required" type="text" placeholder="Email"/>
+                            </p>
+                            <p class = "error">
+                                Invalid email
+                            </p>
+                            <p>
+                                <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="Password"/>
+                            </p>
+                            <p class = "error">
+                                Invalid password
+                            </p>
+                            <p id = "confirm">
+                                <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required"
+                                       type="password" placeholder="Please confirm your password"/>
+                            </p>
+                            <p class = "error">
+                                Different password
+                            </p>
+                            <p id = "create" class="signin button">
+                                <input type="submit" value="Create account"/>
+                            </p>
+                        </form>
+                    </div>
+<!--*****************************************************************************************************************-->
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+<!--*****************************************************************************************************************-->
+
+    <div id = "space"></div>
+    <div class = "h_footer"></div>
+</div>
+<!--************************************* FOOTER *************************************-->
+
+<div id="f-status-bar">
+    <div id="f-status-bar-content">
+        <p id="license">© 2016 Teammer</p>
+        <div id="f-status-bar-commands">
+            <p id="f-action-bar">
+                <a href="index.html" title="Home">Home</a>
+                <a href="Projects.html" title="Projects">Projects</a>
+                <a href="Users.html" title="Users">Users</a>
+                <a href="About.html" title="About">About</a>
+                <a href="Sign_in.html" title="Sign in">Sign in</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

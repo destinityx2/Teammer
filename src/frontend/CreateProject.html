@@ -35,30 +35,40 @@
     </div>
 
     <!--*************************************************** CREATE PROJECT ***************************************************-->
-
-    <div id="create_project" >
-        <h1 id="project_title">Create Project</h1>
-        <form>
-            <div>
-                <input id="project_name" name="project_name" required="required" type="text" placeholder="Enter your project name"/>
-            </div>
-            <div>
-                <textarea rows="20" cols="100" name="description" required="required" placeholder="Project describe"></textarea>
-            </div>
-            <div>
-                <textarea rows="2" cols="100" name="skills" required="required" type="text" placeholder="Required skills"></textarea>
-            </div>
-            <div id="member_button">
-                <div>
-                    <input id="num_members" name="num_members" required="required" type="number" min="1" step="1" placeholder="Members"/>
-                </div>
-                <p id = "create" class="create button">
-                    <input type="submit" value="Create Project"/>
-                </p>
-            </div>
-        </form>
-    </div>
-
+    <form id="project_form">
+        <table id="create_project" >
+            <tr>
+                <td colspan="2">
+                    <input id="project_name" name="project_name" form="project_form" required="required" type="text" placeholder="Name your project"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h1 id = "description">Project description</h1>
+                    <textarea rows="20" cols="100" name="description" form="project_form" required="required" placeholder="Describe your project"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h1 >Skills required</h1>
+                    <textarea rows="2" cols="100" name="skills" form="project_form" required="required" type="text" placeholder="Describe skills the are required"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><h1>Team</h1></td>
+            </tr>
+            <tr id="member_button">
+                <td>
+                    <input id="num_members" name="num_members" form="project_form" required="required" type="number" min="2" step="1" placeholder="Members"/>
+                </td>
+                <td>
+                     <p id = "create" class="create button">
+                        <input type="submit" form="project_form" value="Create Project"/>
+                     </p>
+                </td>
+            </tr>
+        </table>
+    </form>
     <div class = "h_footer"></div>
 </div>
 <!--************************************* FOOTER *************************************-->

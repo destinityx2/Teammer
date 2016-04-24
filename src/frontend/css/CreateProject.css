@@ -3,17 +3,31 @@
     max-width: 700px;
     margin: 40px auto 60px auto;
     text-align: center;
+    background-color: #e5e5e5;
+    border-radius: 3px;
 }
-h1#project_title{
-    text-align: center;
+#create_project tr{
+    border-top: 1px solid #f8f8f8;
+}
+#create_project tr:last-child {
+    border: none;
+}
+#create_project tr:first-child{
+    border: none;
+    background-color: #f8f8f8;
+    text-align: left;
+}
+
+#create_project h1{
+    text-align: left;
     font-family: Arial, sans-serif;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: bolder;
-    margin-bottom: 30px;
+    margin: 15px 5% 10px;
+    padding-left: 5px;
 }
-#member_button{
-    width: 100%;
-    margin: 15px auto 15px auto;
+#create_project h1#description{
+    margin-top: 28px;
 }
 /**************************************************** INPUT STYLING ****************************************************/
 
@@ -37,7 +51,7 @@ input {
 #create_project p.button input{
     float: right;
     width: 150px;
-    margin-right: -25px;
+    margin: 5px 20% 30px;
     cursor: pointer;
     background: #1da7cf;
     padding: 8px 5px;
@@ -45,7 +59,6 @@ input {
     color: #fff;
     font-size: 18px;
     border: 1px solid rgb(28, 108, 122);
-    margin-top: 10px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     transition: all 0.2s linear;
@@ -65,41 +78,52 @@ p.create.button{
 }
 /******************************* ALL INPUT *******************************/
 
-#create_project input:not([type="checkbox"]){
+#create_project input{
     width: 90%;
-    margin: 5px 10% 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px 5px 10px 20px;
-    border: 1px solid rgb(178, 178, 178);
+    border: 1px solid #f8f8f8;
+    border-radius: 3px;
+    background-color: #f8f8f8;
+}
+#create_project input#project_name{
+    width: 100%;
+    background-color: #f8f8f8;
+    font-size: 27px;
+    font-weight: bold;
+    color: #8f918f;
+    padding: 10px 0 10px 0;
+}
+#create_project input:active,
+#create_project input:focus{
+    border: 1px solid rgba(91, 90, 90, 0.01);
+    background: rgba(238, 236, 240, 0.2);
+    box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.1) inset;
+}
+#create_project textarea{
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 5px 10px 20px;
+    border: 1px solid #e5e5e5;
     box-sizing : content-box;
     border-radius: 3px;
-    box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
-    transition: all 0.2s linear;
+    background-color: #e5e5e5;
 }
-#create_project input:not([type="checkbox"]):active,
-#create_project input:not([type="checkbox"]):focus{
+#create_project textarea:active,
+#create_project textarea:focus{
     border: 1px solid rgba(91, 90, 90, 0.7);
     background: rgba(238, 236, 240, 0.2);
-    box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.9) inset;
+    box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.5) inset;
 }
-#create_project textarea:not([type="checkbox"]){
-    width: 90%;
-    margin: 20px 10% 0;
-    padding: 10px 5px 10px 20px;
-    border: 1px solid rgb(178, 178, 178);
-    box-sizing : content-box;
-    border-radius: 3px;
-    box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.6) inset;
-    transition: all 0.2s linear;
+#create_project textarea:required,
+#create_project input:required{
+    box-shadow: none;
 }
-#create_project textarea:not([type="checkbox"]):active,
-#create_project textarea:not([type="checkbox"]):focus{
-    border: 1px solid rgba(91, 90, 90, 0.7);
-    background: rgba(238, 236, 240, 0.2);
-    box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.9) inset;
-}
-
 #create_project #num_members{
     float:left;
     width: 80px;
-    margin-top: 12px;
+    margin: 5px 15% 30px;
+    border: 1px solid rgb(178, 178, 178);
 }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="css/style.css">
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="css/EditProfile.css">
+
+    <script type = "text/javascript" src = "js/jquery-2.2.1.min.js"></script>
+
+    <title>Edit Profile</title>
+</head>
+
+<body>
+
+<div class = "main">
+
+    <!--************************************* HEADER *************************************-->
+
+    <div id="status-bar">
+        <div id="status-bar-content">
+            <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
+            <div id="status-bar-commands">
+                <p id="action-bar">
+                    <a href="index.html" title="Home">Home</a>
+                    <a href="Projects.html" title="Projects">Projects</a>
+                    <a href="Users.html" title="Users">Users</a>
+                    <a href="About.html" title="About">About</a>
+                    <a href="Sign_in.html" title="Sign in">Sign in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--*************************************************** CREATE PROJECT ***************************************************-->
+
+    <div id="create_project" >
+        <h1 id="project_title">Edit profile</h1>
+        <form>
+            <div>
+                <input id="username" name="username" required="required" type="text" placeholder="Enter your name" value="Katherine Kuan"/>
+            </div>
+            <div>
+                <input id="email" name="email" required="required" type="text" placeholder="Enter your email" value="katherine.kuan@gmail.com"/>
+            </div>
+            <div>
+                <input id="phone" name="phone" required="required" type="text" placeholder="Enter your phone number" value="89276190531"/>
+            </div>
+            <div>
+                <textarea rows="20" cols="100" name="description" required="required" placeholder="Personal data">Ph.D plus 8 years of industry experience, specializing in touch sensing, image and video processing algorithms.Proven record of successfully delivering algorithms that were used by customers and went to mass production.Experience in working with customers, as well as different internal engineering teams.Strong analytical and problem solving skills.Hands-on experience working with embedded systems.</textarea>
+            </div>
+            <div>
+                <input id="country" name="country" required="required" type="text" placeholder="Country" value="Canada"/>
+            </div>
+
+            <p id = "create" class="create button">
+                <input type="submit" value="Edit Project"/>
+            </p>
+        </form>
+    </div>
+
+    <div class = "h_footer"></div>
+</div>
+<!--************************************* FOOTER *************************************-->
+
+<div id="f-status-bar">
+    <div id="f-status-bar-content">
+        <p id="license">© 2016 Teammer</p>
+        <div id="f-status-bar-commands">
+            <p id="f-action-bar">
+                <a href="index.html" title="Home">Home</a>
+                <a href="Projects.html" title="Projects">Projects</a>
+                <a href="Users.html" title="Users">Users</a>
+                <a href="About.html" title="About">About</a>
+                <a href="Sign_in.html" title="Sign in">Sign in</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

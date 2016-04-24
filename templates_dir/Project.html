@@ -75,12 +75,12 @@
                 <table class = "team">
                     <tr>
                         {% for member in members %}
-                        <td class = "nickname"><a href="Profile.html" class ="profile" alt="">{{ member.email }}</a></td>
+                        <td class = "nickname"><a class ="profile" alt="">{{ member.email }}</a></td>
                         {% endfor %}
                     </tr>
                     <tr>
                         {% for photo in photos %}
-                        <td class = "photo"><a href="Profile.html" class ="profile" alt="">
+                        <td class = "photo"><a class ="profile" alt="">
                             <img class='ava' src="{% static 'img/user_default.png' %}" alt=""></a></td>
                         {% endfor %}
                     </tr>

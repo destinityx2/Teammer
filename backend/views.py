@@ -27,7 +27,7 @@ def sign_in(request):
             if user is not None:
                 auth.login(request, user)
                 print("success")
-                return redirect('/admin')
+                return redirect('/index')
             else:
                 args['login_error'] = 'User not found'
                 return render_to_response('Sign_in.html', args, context_instance=RequestContext(request))
@@ -52,9 +52,9 @@ def sign_in(request):
                 userinfo = UserInfo(user=user)
                 userinfo.save()
                 print(user)
-                return redirect('/index')
+                return redirect('/index/login')
             else:
-                return redirect('/login')
+                return redirect('/index/register')
         else:
             return render_to_response('Sign_in.html', args, context_instance=RequestContext(request))
 
@@ -67,7 +67,8 @@ def create_project(request):
     return render_to_response('CreateProject.html', args, context_instance=RequestContext(request))
 
 
-def register_project(request, project_id=1):
+def register_project(request):
+    project_id = 0
     args = {}
     args.update(csrf(request))
 
@@ -86,7 +87,10 @@ def register_project(request, project_id=1):
 
         proj.save()
 
-    return render_to_response('index.html', args, context_instance=RequestContext(request))
+        ProjectUsers(user=user, project = proj).save()
+        project_id = proj.id
+
+    return redirect('/index/project/{}/'.format(project_id))
 
 
 def project(request, project_id):
@@ -102,7 +106,7 @@ def project(request, project_id):
     for item in participants:
         ids.append(item.user.id)
 
-    if request.user.id or len(participants) == project.max_people in ids:
+    if request.user.id in ids or len(participants) == project.max_people:
         takes_part = True
 
     args['part'] = takes_part
@@ -121,6 +125,7 @@ def project(request, project_id):
             photo = UserInfo.objects.filter(id=member.id)
             user = User.objects.filter(id=member.id)
 
+            print(member.id)
             if not photo:
                 photos.append('img/user_default.png')
             else:
@@ -128,8 +133,6 @@ def project(request, project_id):
 
             if user:
                 members.append(user[0])
-            else:
-                pass
 
         args['members'] = members
         args['project_q'] = project
@@ -188,13 +191,43 @@ def about(request):
 
 def profile(request, user_id):
     user = User.objects.filter(id=user_id)[0]
-    print(dir(user))
-    args = {'user': user}
+    args = {'user_cur': user, 'user_id': request.user.id}
     return render_to_response('Profile.html', args, context_instance=RequestContext(request))
 
 
-def profile_edit(request):
-    return render_to_response('Profile_SignIn.html', context_instance=RequestContext(request))
+def profile_edit(request, user_id):
+    user = User.objects.filter(id=user_id)[0]
+    args = {'user': user}
+    args.update(csrf(request))
+    return render_to_response('EditProfile.html', args, context_instance=RequestContext(request))
+
+
+def profile_apply_changes(request, user_id):
+    username = request.POST.get('username', '')
+    email = request.POST.get('email', '')
+    phone = request.POST.get('phone', '')
+    description = request.POST.get('description', '')
+    country = request.POST.get('country', '')
+
+    user = User.objects.filter(id=user_id)[0]
+
+    user.username = username
+    user.email = email
+
+    userinfo = UserInfo.objects.filter(user=user)[0]
+
+    userinfo.phone = phone
+    userinfo.description = description
+    userinfo.country = country
+
+    # user.userinfo.phone = phone
+    # user.userinfo.description = description
+    # user.userinfo.country = country
+
+    user.save()
+    userinfo.save()
+
+    return redirect('/index/profile/{}/'.format(user_id))
 
 
 def users(request):

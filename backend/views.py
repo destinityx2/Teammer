@@ -101,6 +101,7 @@ def project(request, project_id):
     takes_part = False
 
     participants = ProjectUsers.objects.filter(project=project)
+
     ids = []
 
     for item in participants:
@@ -123,7 +124,11 @@ def project(request, project_id):
 
         for member in participants:
             photo = UserInfo.objects.filter(id=member.id)
-            user = User.objects.filter(id=member.id)
+            #user = User.objects.filter(id=member.id)
+            user = member.user
+
+            print("LOOKING FOR USER WITH ID", member.id)
+            print("FOUND USER = ", user)
 
             print(member.id)
             if not photo:
@@ -132,7 +137,10 @@ def project(request, project_id):
                 photos.append(UserInfo.objects.filter(id=member.id)[0].photo)
 
             if user:
-                members.append(user[0])
+                members.append(user)
+
+        if not members:
+            print("MEMBERS ARE 0")
 
         args['members'] = members
         args['project_q'] = project

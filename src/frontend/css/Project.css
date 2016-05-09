@@ -57,9 +57,11 @@ td#first_line
     float: right;
     position: relative;
     text-align:center;
-    width: 100px;
-    height: 30px;
+    width: 150px;
+    height: 37px;
+    margin-top: 15px;
     padding-bottom: 6px;
+    margin-bottom: 15px;
     font-family: Arial, sans-serif;
     font-size: 25px;
     border: 1px solid #e5e5e5;
@@ -72,9 +74,15 @@ td#first_line
 }
 
 #Close{
-    margin-right: -101px;
+    margin-right: -151px;
     color: #ffffff;
     background-color: #d51c1c;
+    visibility: hidden;
+}
+#Processing{
+    margin-left: -151px;
+    color: #ffffff;
+    background-color: #FDD02D;
     visibility: hidden;
 }
 
@@ -93,6 +101,8 @@ td#first_line
 .apply input{
     float: left;
     width: 150px;
+    margin-left: 15px;
+    margin-top: 20px;
     cursor: pointer;
     background: #1da7cf;
     padding: 8px 5px;

@@ -1,0 +1,222 @@
+h2
+{
+    width: 60%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+    margin: 50px auto 0 auto;
+}
+
+.project
+{
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 1300px;
+    margin: 25px auto 30px auto;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+}
+.project td{
+    padding: 30px 20px 20px;
+}
+td#first_line
+{
+    height: 35px;
+}
+
+.description
+{
+    width: 85%;
+    margin: 15px auto 15px auto;
+}
+.team{
+    width: 95%;
+    margin: 15px auto 10px auto;
+}
+.team td
+{
+    text-align: center;
+}
+.team a{
+    width: 100%;
+    text-decoration: none;
+    color: #000;
+}
+.skills_required{
+    width: 85%;
+    margin: 15px auto 15px auto;
+}
+
+.project h3{
+    margin-left: 15px;
+    padding: 15px;
+    font-size: 22px;
+}
+
+
+.status{
+    float: right;
+    position: relative;
+    text-align:center;
+    width: 150px;
+    height: 37px;
+    margin-top: 15px;
+    padding-bottom: 6px;
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+#Open{
+    color: #ffffff;
+    background-color: #1da229;
+}
+
+#Close{
+    margin-right: -151px;
+    color: #ffffff;
+    background-color: #d51c1c;
+    visibility: hidden;
+}
+#Processing{
+    margin-left: -151px;
+    color: #ffffff;
+    background-color: #FDD02D;
+    visibility: hidden;
+}
+.ava
+{
+    width: 150px;
+    height: 150px;
+    border-radius: 300px;
+    padding-top: 10px;
+}
+.project p{
+    color: #404040;
+    line-height: 1.5;
+}
+/**************************************************** INPUT STYLING ****************************************************/
+
+/******************************* PLACEHOLDER *******************************/
+
+::-webkit-input-placeholder  {
+    color: rgb(190, 188, 188);
+    font-style: italic;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder{
+    color: rgb(190, 188, 188);
+    font-style: italic;
+}
+input {
+    outline: none;
+}
+
+/******************************* SUBMIT BUTTONS *******************************/
+
+.project p.button input{
+    min-width: 150px;
+    width: 30%;
+    max-width: 400px;
+    margin: 5px 35% 30px;
+    cursor: pointer;
+    background: #1da7cf;
+    padding: 8px 5px;
+    font-family: Arial,sans-serif;
+    color: #fff;
+    font-size: 18px;
+    border: 1px solid rgb(28, 108, 122);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    transition: all 0.2s linear;
+}
+.project p.button input:hover{
+    background: rgb(74, 179, 198);
+}
+.project p.button input:active,
+.project p.button input:focus{
+    background: rgb(40, 137, 154);
+    top: 1px;
+    border: 1px solid rgb(12, 76, 87);
+    box-shadow: 0 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+p.create.button{
+    text-align: right;
+}
+/******************************* ALL INPUT *******************************/
+
+.project input{
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 5px 10px 20px;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    background-color: #f8f8f8;
+}
+.project input#project_name{
+    width: 60%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 50px 20% 0;
+    background-color: #ffffff;
+    font-size: 27px;
+    font-weight: bold;
+    color: #000;
+}
+.project input:active,
+.project input:focus{
+    border: 1px solid rgba(255, 255, 255, 0.01);
+    background: rgba(238, 236, 240, 0.2);
+    box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.1) inset;
+}
+.project textarea{
+    width: 85%;
+    margin: 15px 7.5% 15px;
+    padding: 10px 5px 10px 20px;
+    border: 1px solid #ffffff;
+    box-sizing : content-box;
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #404040;
+    line-height: 1.5;
+}
+.project textarea:active,
+.project textarea:focus{
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(238, 236, 240, 0.2);
+    box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.5) inset;
+}
+.project textarea:required,
+.project input:required{
+    box-shadow: none;
+}
+
+#candidates{
+    text-align: center;
+    padding: 30px 20px 20px;
+}
+#candidates p{
+    margin: 0;
+}
+.button{
+    border: none;
+    box-shadow: none;
+    background-color: #ffffff;
+}
+.apply{
+    color: darkgreen;
+}
+
+.decline{
+    color: darkred;
+}
+
+#default img:hover{
+    filter: alpha(Opacity=75);
+    -webkit-filter: opacity(50%);
+    filter: opacity(50%);
+}

@@ -2,23 +2,20 @@
 
 {% load staticfiles %}
 
-<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/style.css' %}">
-    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/CreateProject.css' %}">
+    <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/Project.css' %}">
+
 
     <script type = "text/javascript" src = "{% static 'js/jquery-2.2.1.min.js' %}"></script>
 
-    <title>Create Project</title>
+    <title>Project</title>
 </head>
 
 <body>
-
-<div class = "main">
-
-    <!--************************************* HEADER *************************************-->
+<!--************************************* HEADER *************************************-->
 
     <div class = "main">
         <div id="status-bar">
@@ -40,42 +37,57 @@
             </div>
         </div>
 
-    <!--*************************************************** CREATE PROJECT ***************************************************--><form action="{% url 'backend.views.register_project' %}" method="post">
-        <form action="{% url 'backend.views.register_project' %}" method="post">
-            {% csrf_token %}
-        <table id="create_project" >
-            <tr>
-                <td colspan="2">
-                    <input id="project_name" name="project_name" required="required" type="text" placeholder="Name your project"/>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <h1 id = "description">Project description</h1>
-                    <textarea rows="20" cols="100" name="description" required="required" placeholder="Describe your project"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <h1 >Skills required</h1>
-                    <textarea rows="2" cols="100" name="skills" required="required" type="text" placeholder="Describe skills the are required"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><h1>Team</h1></td>
-            </tr>
-            <tr id="member_button">
-                <td>
-                    <input id="num_members" name="num_members" required="required" type="number" min="2" step="1" placeholder="Members"/>
-                </td>
-                <td>
-                     <p id = "create" class="create button">
-                        <input type="submit" value="Create Project"/>
-                     </p>
-                </td>
-            </tr>
-        </table>
-    </form>
+    <!--************************************* PROJECT *************************************-->
+    <h2>{{ project_name }}</h2>
+
+    <table class="project">
+        <tr><td id="first_line">
+            <form action="{% url 'backend.views.manage_project' project_q.id %}">
+                <p class="manage_project">
+                    <input type="submit" value="Manage Project"/>
+                </p>
+            </form>
+            <p id="Open" class="status">Open</p>   <p id="Close" class="status">Close</p></td></tr>
+
+        <tr>
+            <td>
+                <h3>Project description</h3>
+                <p class = "description">
+                    {{ description }}
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <h3>Skills required</h3>
+                <p class = "skills_required">
+                    {{ skills }}
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <h3>Team ({{ cur_number }}/{{ max_number }})</h3>
+                <table class = "team">
+                    <tr>
+                        {% for member in members %}
+                        <td class = "nickname"><a class ="profile" alt="">{{ member.email }}</a></td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for photo in photos %}
+                        <td class = "photo"><a class ="profile" alt="">
+                            <img class='ava' src="{% static 'img/user_default.png' %}" alt=""></a></td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+
     <div class = "h_footer"></div>
 </div>
 <!--************************************* FOOTER *************************************-->
@@ -94,6 +106,7 @@
         </div>
     </div>
 </div>
+
 
 </body>
 </html>

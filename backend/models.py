@@ -23,3 +23,10 @@ class ProjectUsers(models.Model):
     user = models.ForeignKey(User)
     project = models.ForeignKey(Project)
     start_date = models.DateField(auto_now_add=True)
+
+
+class Applicants(models.Model):
+    user = models.ForeignKey(User)
+    project = models.ForeignKey(Project)
+    application_date = models.DateField(auto_now_add=True)
+    accepted = models.BooleanField()

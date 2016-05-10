@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.template.context_processors import csrf
 from django.template.loader import get_template
 from django.utils import timezone
-from backend.models import UserInfo, ProjectUsers, Project
+from backend.models import UserInfo, ProjectUsers, Project, Applicants
 
 
 def index(request):
@@ -72,6 +72,8 @@ def register_project(request):
     args = {}
     args.update(csrf(request))
 
+    print("HERE!!!")
+
     if request.POST:
         project_name = request.POST.get('project_name')
         description = request.POST.get('description')
@@ -97,6 +99,12 @@ def project(request, project_id):
     args = {}
     # project_id = request.GET.get('id', '')
     project = Project.objects.filter(id=project_id)[0]
+    is_admin = False
+
+    if project.creator == request.user:
+        is_admin = True
+
+
 
     takes_part = False
 
@@ -146,7 +154,11 @@ def project(request, project_id):
         args['project_q'] = project
         args['photos'] = photos
         args['cur_number'] = len(participants)
-        return render_to_response('Project.html', args, context_instance=RequestContext(request))
+
+        if not is_admin:
+            return render_to_response('Project.html', args, context_instance=RequestContext(request))
+        else:
+            return render_to_response('Project_for_Creator.html', args, context_instance=RequestContext(request))
 
 
 def apply_project(request, project_id):
@@ -157,19 +169,26 @@ def apply_project(request, project_id):
     current_num = len(ProjectUsers.objects.filter(project_id=project_id))
     max_num = (Project.objects.filter(id=project_id)[0]).max_people
 
-    project = Project.objects.filter(id=project_id)
-    participants = ProjectUsers.objects.filter(project=project)
-
     if current_num < max_num:
-        current_num += 1
+        #current_num += 1
 
-        new_instance = ProjectUsers()
-        new_instance.user = user
-        new_instance.project = Project.objects.filter(id=project_id)[0]
+        #new_instance = ProjectUsers()
+        #new_instance.user = user
+        #new_instance.project = Project.objects.filter(id=project_id)[0]
 
-        new_instance.save()
+        #new_instance.save()
+
+        new_applicant = Applicants()
+        new_applicant.user = user
+        new_applicant.project = Project.objects.filter(id=project_id)[0]
+
+        new_applicant.save()
 
     return redirect('/index/projects')
+
+
+def manage_project(request, project_id):
+    return render_to_response('ManageProject.html', context_instance=RequestContext(request))
 
 
 def projects(request):

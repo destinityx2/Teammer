@@ -29,4 +29,4 @@ class Applicants(models.Model):
     user = models.ForeignKey(User)
     project = models.ForeignKey(Project)
     application_date = models.DateField(auto_now_add=True)
-    accepted = models.BooleanField()
+    accepted = models.BooleanField(default=False)

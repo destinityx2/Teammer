@@ -169,6 +169,8 @@ def apply_project(request, project_id):
     current_num = len(ProjectUsers.objects.filter(project_id=project_id))
     max_num = (Project.objects.filter(id=project_id)[0]).max_people
 
+    print(current_num, max_num)
+
     if current_num < max_num:
         #current_num += 1
 
@@ -183,6 +185,7 @@ def apply_project(request, project_id):
         new_applicant.project = Project.objects.filter(id=project_id)[0]
 
         new_applicant.save()
+        print("X")
 
     return redirect('/index/projects')
 

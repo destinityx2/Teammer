@@ -57,9 +57,9 @@
 
             {% for project in projects %}
                 <tr><td class='project_name'><h3><a href="{% url 'backend.views.project' project.id %}">{{ project.project_name }}</a></h3>
-                <p class='description'>{{ project.description }}</p>
+                <p class='description'>{{ project.description }}</p> 
                 <p class='skills'>{{ project.skills }}</p></td>
-                <td class='date'><p>{{ project.publication_date }}</p></td><td class='members'><p>3/4</p></td></tr>
+                <td class='date'><p>{{ project.publication_date }}</p></td><td class='members'><p>{{ project.projectusers_set.all|length}} / {{project.max_people }}</p></td></tr>
             {% endfor %}
 
             </tbody>

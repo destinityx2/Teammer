@@ -117,7 +117,22 @@ def project(request, project_id):
     if request.user.id in ids or len(participants) == project.max_people:
         takes_part = True
 
-    args['part'] = takes_part
+    applicants = Applicants.objects.filter(project=project)
+
+    ids_apps = []
+
+    for item in applicants:
+        ids_apps.append(item.user.id)
+
+    print(ids_apps)
+
+    if request.user.id in ids_apps:
+        takes_part = True
+
+    print("USER ID =", request.user.id)
+    print("TAKES PART = ", takes_part)
+
+    args['takes_part'] = takes_part
 
     if project is None:
         return redirect('/index')

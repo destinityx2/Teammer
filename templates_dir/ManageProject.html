@@ -45,7 +45,7 @@
     <table class="project">
         <tr>
             <td>
-                <input id="project_name" name="project_name" form="manage_project" required="required" type="text" placeholder="Name your project" value="{{ project.project_name }}"/>
+                <input id="project_name" name="project_name" autocomplete="off" form="manage_project" required="required" type="text" placeholder="Name your project" value="{{ project.project_name }}"/>
             </td>
         </tr>
         <tr>
@@ -177,7 +177,7 @@
         <tr>
             <td>
                 <p id = "create" class="create button">
-                    <input type="submit" form="manage_project" value="Change"/>
+                    <input type="submit" form="manage_project" value="Apply changes"/>
                 </p>
             </td>
         </tr>

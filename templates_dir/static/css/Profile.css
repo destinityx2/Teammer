@@ -51,6 +51,10 @@
     display: inherit;
     text-align: center;
 }
+#button a
+{
+    text-decoration: none;
+}
 #button p#edit input{
     width: 180px;
     cursor: pointer;

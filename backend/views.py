@@ -46,6 +46,9 @@ def sign_in(request):
             print(password_confirm)
             print(email)
 
+            if len(User.objects.filter(username=username)) != 0:
+                return redirect('/index/login/#toregister')
+
             if password == password_confirm:
                 user = User.objects.create_user(username, email, password)
                 user.save()
@@ -54,7 +57,7 @@ def sign_in(request):
                 print(user)
                 return redirect('/index/login')
             else:
-                return redirect('/index/register')
+                return redirect('/index/login/#toregister')
         else:
             return render_to_response('Sign_in.html', args, context_instance=RequestContext(request))
 

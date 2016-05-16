@@ -42,7 +42,7 @@
 
     <table class="project">
         <tr><td id="first_line">
-            {% if not part %}
+            {% if user.is_authenticated %}
             <form action="{% url 'backend.views.apply_project' project_q.id %}">
                 <p class="apply_project">
                     <input type="submit" value="Apply Project"/>

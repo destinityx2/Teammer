@@ -178,7 +178,7 @@ def apply_project(request, project_id):
 
         new_applicant.save()
 
-    return redirect('/index/projects')
+    return redirect('/index/projects/' + project_id)
 
 
 def manage_project(request, project_id):

@@ -20,7 +20,7 @@
     <div class = "main">
         <div id="status-bar">
             <div id="status-bar-content">
-                <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
+                <h1 id = "Emblem"><a href="{% url 'backend.views.index' %}" title="Teammer">Teammer</a></h1>
                 <div id="status-bar-commands">
                     <p id="action-bar">
                         <a href="{% url 'backend.views.index' %}" title="Home">Home</a>
@@ -74,9 +74,9 @@
                 <h3>Team ({{ cur_number }}/{{ max_number }})</h3>
                 <table class = "team">
                     <tr>
-                        {% for member in members %}
-                        <td class = "nickname"><a class ="profile" alt="">{{ member.email }}</a></td>
-                        {% endfor %}
+                    {% for member in members %}
+                    <td class = "nickname"><a href="{% url 'backend.views.profile' member.id %}" class ="profile" alt="">{{ member.username }}</a></td>
+                    {% endfor %}
                     </tr>
                     <tr>
                         {% for photo in photos %}
@@ -103,7 +103,11 @@
                 <a href="{% url 'backend.views.projects' %}" title="Projects">Projects</a>
                 <a href="{% url 'backend.views.users' %}" title="Users">Users</a>
                 <a href="{% url 'backend.views.about' %}" title="About">About</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'backend.views.logout' %}" title="Logout">Logout</a>
+                {% else %}
                 <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
+                {% endif %}
             </p>
         </div>
     </div>

@@ -9,7 +9,6 @@
     <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/style.css' %}">
     <LINK rel="stylesheet" media="screen" type="text/css" title="Style" href="{% static 'css/ManageProject.css' %}">
 
-
     <script type = "text/javascript" src = "{% static 'js/jquery-2.2.1.min.js' %}"></script>
     <script type = "text/javascript" src = "{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script type = "text/javascript" src = "{% static 'js/ManageProject.js' %}"></script>
@@ -23,7 +22,7 @@
     <div class = "main">
         <div id="status-bar">
             <div id="status-bar-content">
-                <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
+                <h1 id = "Emblem"><a href="{% url 'backend.views.index' %}" title="Teammer">Teammer</a></h1>
                 <div id="status-bar-commands">
                     <p id="action-bar">
                         <a href="{% url 'backend.views.index' %}" title="Home">Home</a>
@@ -41,11 +40,12 @@
         </div>
 
     <!--************************************* MANAGE PROJECT *************************************-->
-    <form id="manage_project">
+    <form id="manage_project" method="post" action="{% url 'backend.views.apply_changes_manage_project' project.id %}">
+        {% csrf_token %}
     <table class="project">
         <tr>
             <td>
-                <input id="project_name" name="project_name" form="manage_project" required="required" type="text" placeholder="Name your project" value="Web ePub Reader"/>
+                <input id="project_name" name="project_name" form="manage_project" required="required" type="text" placeholder="Name your project" value="{{ project.project_name }}"/>
             </td>
         </tr>
         <tr>
@@ -56,18 +56,14 @@
         <tr>
             <td>
                 <h3>Project description</h3>
-                <textarea rows="30" cols="80" name="description" form="manage_project" required="required" placeholder="Describe your project">
-                {{ description }}
-                </textarea>
+                <textarea rows="30" cols="80" name="description" form="manage_project" required="required" placeholder="Describe your project">{{ project.description }}</textarea>
             </td>
         </tr>
 
         <tr>
             <td>
                 <h3>Skills required</h3>
-                <textarea rows="2" cols="100" name="skills" form="manage_project" required="required" type="text" placeholder="Describe skills the are required">
-                {{ Skills }}
-                </textarea>
+                <textarea rows="2" cols="100" name="skills" form="manage_project" required="required" type="text" placeholder="Describe skills the are required">{{ project.skills }}</textarea>
             </td>
         </tr>
 
@@ -90,27 +86,60 @@
 
                             <table id="team" class = "team">
                                 <tr>
+                                    {% for proj_user in project.projectusers_set.all %}
+                                    <td><a href = "{% url 'backend.views.profile' proj_user.user.id %}" class ="profile" alt="">{{ proj_user.user.username }}</a><br>
+                                        <a href = "{% url 'backend.views.profile' proj_user.user.id %}" class ="profile" alt=""><img class='ava' src="{% static proj_user.user.userinfo.photo %}" alt=""></a>
+                                    </td>
+
+                                    {% endfor %}
+                                    <!---
                                     <td><a href="Profile.html" class ="profile" alt="">Jessica Lin</a><br>
-                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="img/ava4.jpg" alt=""></a>
+                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="{% static 'img/ava4.jpg' %}" alt=""></a>
                                     </td>
                                     <td><a href="Profile.html" class ="profile" alt="">Jeremy Silver</a><br>
-                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="img/ava1.jpg" alt=""></a>
+                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="{% static 'img/ava1.jpg' %}" alt=""></a>
                                     </td>
                                     <td><a href="Profile.html" class ="profile" alt="">Katherine Kuan</a><br>
-                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="img/ava2.png" alt=""></a>
+                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="{% static 'img/ava2.png' %}" alt=""></a>
                                     </td>
+                                    -->
+                                    <!---
                                     <td id = "default"><p onclick="AddPeople(3)" class ="profile" alt=""></p><br>
-                                        <img onclick="AddPeople(3)" class='ava' src="img/add_people.png" alt=""></a>
+                                        <img onclick="AddPeople(3)" class='ava' src="{% static 'img/add_people.png' %}" alt=""></a>
                                     </td>
+                                    -->
                                 </tr>
                             </table>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="applicants">
                             <table id="candidates">
                                 <tr>
+                                    {% for applicant in project.applicants_set.all %}
+                                    {% if not applicant.accepted %}
+                                    <td>
+                                        <a href="{% url 'backend.views.profile' applicant.user.id %}" class ="profile" alt="">{{ applicant.user.username }}</a><br>
+                                        <a href="{% url 'backend.views.profile' applicant.user.id %}" class ="profile" alt=""><img class='ava' src="{% static applicant.user.userinfo.photo %}" alt=""></a>
+                                        <div>
+                                            <a href = "{% url 'backend.views.apply_applicant' applicant.user.id applicant.project.id%}">
+
+                                                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+
+                                            </a>
+
+                                                <!-- DECLINE BUTTON -->
+                                                <!--
+                                                <button class = "button decline">
+                                                    <span class="glyphicon  glyphicon-remove" aria-hidden="true"></span>
+                                                </button>
+                                                -->
+                                        </div>
+                                    </td>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <!--
                                     <td>
                                         <a href="Profile.html" class ="profile" alt="">Jessica Lin</a><br>
-                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="img/ava4.jpg" alt=""></a>
+                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="{% static 'img/ava4.jpg' %}" alt=""></a>
                                         <div>
                                             <form>
                                                 <button class = "button apply " >
@@ -124,7 +153,7 @@
                                     </td>
                                     <td>
                                         <a href="Profile.html" class ="profile" alt="">Katherine Kuan</a><br>
-                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="img/ava2.png" alt=""></a>
+                                        <a href="Profile.html" class ="profile" alt=""><img class='ava' src="{% static 'img/ava2.png' %}" alt=""></a>
                                         <div class = "apply button">
                                             <form>
                                                 <button class = "button apply">
@@ -136,6 +165,7 @@
                                             </form>
                                         </div>
                                     </td>
+                                    -->
                                 </tr>
                             </table>
                         </div>
@@ -166,7 +196,11 @@
                 <a href="{% url 'backend.views.projects' %}" title="Projects">Projects</a>
                 <a href="{% url 'backend.views.users' %}" title="Users">Users</a>
                 <a href="{% url 'backend.views.about' %}" title="About">About</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'backend.views.logout' %}" title="Logout">Logout</a>
+                {% else %}
                 <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
+                {% endif %}
             </p>
         </div>
     </div>

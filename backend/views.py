@@ -72,8 +72,6 @@ def register_project(request):
     args = {}
     args.update(csrf(request))
 
-    print("HERE!!!")
-
     if request.POST:
         project_name = request.POST.get('project_name')
         description = request.POST.get('description')
@@ -104,8 +102,6 @@ def project(request, project_id):
     if project.creator == request.user:
         is_admin = True
 
-
-
     takes_part = False
 
     participants = ProjectUsers.objects.filter(project=project)
@@ -126,6 +122,7 @@ def project(request, project_id):
         args['description'] = project.description
         args['max_number'] = project.max_people
         args['skills'] = project.skills
+        args['project_name'] = project.project_name
 
         photos = []
         members = []
@@ -172,26 +169,21 @@ def apply_project(request, project_id):
     print(current_num, max_num)
 
     if current_num < max_num:
-        #current_num += 1
-
-        #new_instance = ProjectUsers()
-        #new_instance.user = user
-        #new_instance.project = Project.objects.filter(id=project_id)[0]
-
-        #new_instance.save()
-
         new_applicant = Applicants()
         new_applicant.user = user
         new_applicant.project = Project.objects.filter(id=project_id)[0]
 
         new_applicant.save()
-        print("X")
 
     return redirect('/index/projects')
 
 
 def manage_project(request, project_id):
-    return render_to_response('ManageProject.html', context_instance=RequestContext(request))
+    args = {}
+    args.update(csrf(request))
+    proj = Project.objects.filter(id=project_id)[0]
+    args.update({"project": proj})
+    return render_to_response('ManageProject.html', args, context_instance=RequestContext(request))
 
 
 def projects(request):
@@ -258,6 +250,29 @@ def profile_apply_changes(request, user_id):
     userinfo.save()
 
     return redirect('/index/profile/{}/'.format(user_id))
+
+
+def apply_applicant(request, user_id, proj_id):
+    user = User.objects.filter(id=user_id)[0]
+    proj = Project.objects.filter(id=proj_id)[0]
+    ProjectUsers(user=user, project=proj).save()
+    applic = Applicants.objects.filter(user=user, project=proj)[0]
+    applic.accepted = True
+    applic.save()
+    return redirect('/index/manage_project/{}'.format(proj_id))
+
+
+def apply_changes_manage_project(request, project_id):
+    project_name = request.POST.get('project_name', '')
+    description = request.POST.get('description', '')
+    skills = request.POST.get('skills', '')
+
+    proj = Project.objects.filter(id=project_id)[0]
+    proj.project_name = project_name
+    proj.description = description
+    proj.skills = skills
+    proj.save()
+    return redirect('/index/project/{}/'.format(project_id))
 
 
 def users(request):

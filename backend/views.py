@@ -54,7 +54,7 @@ def sign_in(request):
                 print(user)
                 return redirect('/index/login')
             else:
-                return redirect('/index/register')
+                return redirect('/index/login')
         else:
             return render_to_response('Sign_in.html', args, context_instance=RequestContext(request))
 
@@ -169,6 +169,8 @@ def apply_project(request, project_id):
     current_num = len(ProjectUsers.objects.filter(project_id=project_id))
     max_num = (Project.objects.filter(id=project_id)[0]).max_people
 
+    print(current_num, max_num)
+
     if current_num < max_num:
         #current_num += 1
 
@@ -184,7 +186,7 @@ def apply_project(request, project_id):
 
         new_applicant.save()
 
-    return redirect('/index/projects')
+    return redirect('/index/projects/' + project_id)
 
 
 def manage_project(request, project_id):

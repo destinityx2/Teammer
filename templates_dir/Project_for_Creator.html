@@ -20,7 +20,7 @@
     <div class = "main">
         <div id="status-bar">
             <div id="status-bar-content">
-                <h1 id = "Emblem"><a href="index.html" title="Teammer">Teammer</a></h1>
+                <h1 id = "Emblem"><a href="{% url 'backend.views.index' %}" title="Teammer">Teammer</a></h1>
                 <div id="status-bar-commands">
                     <p id="action-bar">
                         <a href="{% url 'backend.views.index' %}" title="Home">Home</a>
@@ -43,9 +43,9 @@
     <table class="project">
         <tr><td id="first_line">
             <form action="{% url 'backend.views.manage_project' project_q.id %}">
-                <p class="manage_project">
+                <div id = " apply" class="apply_project">
                     <input type="submit" value="Manage Project"/>
-                </p>
+                </div>
             </form>
             <p id="Open" class="status">Open</p>   <p id="Close" class="status">Close</p></td></tr>
 
@@ -101,7 +101,11 @@
                 <a href="{% url 'backend.views.projects' %}" title="Projects">Projects</a>
                 <a href="{% url 'backend.views.users' %}" title="Users">Users</a>
                 <a href="{% url 'backend.views.about' %}" title="About">About</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'backend.views.logout' %}" title="Logout">Logout</a>
+                {% else %}
                 <a href="{% url 'backend.views.sign_in' %}" title="Sign in">Sign in</a>
+                {% endif %}
             </p>
         </div>
     </div>

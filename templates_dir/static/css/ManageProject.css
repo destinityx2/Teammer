@@ -180,14 +180,14 @@ p.create.button{
     border: 1px solid #ffffff;
     box-sizing : content-box;
     border-radius: 3px;
-    background-color: #ffffff;
+    background-color: rgba(238, 236, 240, 0.2);;
     color: #404040;
     line-height: 1.5;
 }
 .project textarea:active,
 .project textarea:focus{
     border: 1px solid rgba(255, 255, 255, 0.7);
-    background: rgba(238, 236, 240, 0.2);
+    background: #eeecf2;
     box-shadow: 0 1px 4px 0 rgba(168, 168, 168, 0.5) inset;
 }
 .project textarea:required,

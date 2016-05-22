@@ -97,6 +97,7 @@ def register_project(request):
 
 
 def project(request, project_id):
+    print(project_id)
     args = {}
     # project_id = request.GET.get('id', '')
     project = Project.objects.filter(id=project_id)[0]
@@ -162,6 +163,7 @@ def project(request, project_id):
             if user:
                 members.append(user)
 
+        print(members[0].username)
         if not members:
             print("MEMBERS ARE 0")
 

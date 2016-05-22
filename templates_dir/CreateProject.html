@@ -17,10 +17,7 @@
 <body>
 
 <div class = "main">
-
     <!--************************************* HEADER *************************************-->
-
-    <div class = "main">
         <div id="status-bar">
             <div id="status-bar-content">
                 <h1 id = "Emblem"><a href="{% url 'backend.views.index' %}" title="Teammer">Teammer</a></h1>
@@ -40,9 +37,9 @@
             </div>
         </div>
 
-    <!--*************************************************** CREATE PROJECT ***************************************************--><form action="{% url 'backend.views.register_project' %}" method="post">
-        <form action="{% url 'backend.views.register_project' %}" method="post">
-            {% csrf_token %}
+    <!--*************************************************** CREATE PROJECT ***************************************************-->
+    <form action="{% url 'backend.views.register_project' %}" method="post">
+    {% csrf_token %}
         <table id="create_project" >
             <tr>
                 <td colspan="2">

@@ -4,6 +4,9 @@
     margin: 40px auto 60px auto;
     text-align: center;
 }
+#create_project h1{
+    margin-top: 20px;
+}
 h1#project_title{
     text-align: center;
     font-family: Arial, sans-serif;
@@ -102,4 +105,5 @@ p.create.button{
     float:left;
     width: 80px;
     margin-top: 12px;
+    margin-left: 70px;
 }

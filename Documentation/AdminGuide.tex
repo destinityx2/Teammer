@@ -1,0 +1,141 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\author{Ivan Afonichkin \\ \href{mailto:ivanafonichkin@gmail.com}{ivanafonichkin@gmail.com} 
+   \and Nikita Kuts \\ \href{mailto:chaozik1337@gmail.com}{chaozik1337@gmail.com} }
+
+\newcommand{\sectionbreak}{\clearpage}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand{\baselinestretch}{1.5}
+\title{Teammer \\ Administrator's guide}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{License}
+Teammer is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the \href{http://www.gnu.org/licenses/}{GNU General Public License} for more details.
+
+\section{Before you begin}
+\subsection{What is Teammer}
+
+Teammer is an education platform that allows people join groups, interact with each other and, finally, learn new things!
+
+\subsection{How to use this guide}
+This guide is for Teammer administrators and webmasters responsible for installing, configuring, maintaining Teammer and it’s realeated applications.
+
+This guide is meant to help you set up Teammer quickly and easily.
+
+We assume that you’re familar with Django framework, if not you better learn primitives of it before starting the work.
+
+\section{Installing}
+You will need:
+
+\begin{enumerate}
+\item Django 1.9.4
+\item PostgreSQL 9.4
+\end{enumerate}
+
+During development all of us used UNIX-like systems, but if you’re using Windows, you will still be able do get the work done, but we still recommend installing Linux (for example, it wont be that easy to set up virtualenv on Windows).
+
+To start, get all the source code from \href{https://github.com/destinityx2/Teammer}{here}.
+
+Now we have something to work with, but we are still missing plugins. You will need is called ‘psycopg2’, it connects your python code with PostgreSQL-driven DB. You can get it from ‘pip’ very easily.
+
+Now you should find file called ‘manage.py’ in Terminal (cmd if you’re on Windows).
+Run ‘python manage.py runserver’. It will give you at least one error: “Cant find database XXX”. Reasonable.
+There’s two ways out:
+\begin{enumerate}
+\item Create your own database (using psql) and set up your ‘setting.py’ file according to it.
+\item Use database dump that comes from git and import it, but you will still need to change administrator username/password in ‘settings.py’.
+\end{enumerate}
+
+Now, you can try once again: ‘python manage.py runserver’.
+If it still gives you errors it’s because you made something wrong on previous step or you are still missing some needed packages. Just read your error-messages and ‘pip install’ them.
+
+If you can run your server succesfully now (just go to localhost:8000) - Congrats!
+
+\section{Admin’s web interface}
+Go to the ‘localhost:8000/admin’ and you will see login dialogue:
+\begin{center}
+\includegraphics[scale=0.6]{admin1.png}
+\end{center}
+After you login into it, you will be able to manage Teammer using graphical interface.
+\begin{center}
+\includegraphics[scale=0.45]{admin2.png}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.5]{admin3.png}
+\end{center}
+
+This interface gives you power in managing users (you can block them, manage their data, etc). Have to say, it’s pretty intuitive.
+
+\section{Teammer’s architecture}
+Teammer is built using Django framework, thus it has ‘typical’ structure for any Django built application. MVC pattern and so on.
+
+If you see your project folder contains another folder called ‘templates\_dir/’. Inside of it you can found all the templates, that are rendered while you surfing Teammer pages. We do not use template inheritance.
+
+Teammer is an application, that contains another application called ‘backend’. You can work with it directly using Terminal (django feature). And ‘backend’ application is the brain of whole ‘Teammer’ it handles a lot and there’s no need for any other applications inside Teammer at the moment.
+
+Our user structure is pretty clear: we use basic Django class called ‘User’ and we extend it with one of our models (‘UserInfo’) to store additional info. We will touch other models later.
+
+Basically, that’s all about architecture. Specific things going to be discussed next.
+
+\section{Modifying Teammer}
+\subsection{Templates}
+If you want to change structure of a template you go to ‘template/dir’ and do it! But you have to remember just a few things:
+\begin{enumerate}
+\item Don’t forget that static imports for HTML-template are stored inside ‘static/’ folder
+\item All the imports have ‘Django-syntax’. Read django docs if you are not familar with it.
+\item Out application uses ‘csrf tokens’ for every page, if you delete it, something will go wrong. Tokens are needed to make Teammer safer.
+\item You will find views names on HTML pages, so if you are going to edit, you better do the same to view first.
+\end{enumerate}
+
+\subsection{Views}
+Go to ‘views.py’ inside of ‘backend’ application. Views are the places where all the database interaction takes place and templates are getting filled with specific info before user will see them rendered.
+\begin{enumerate}
+\item Data that is going to be passed to template is stored in dictionary. We call it ‘args’.
+\item Before trying to ‘read’ users input from some form do not forget to validate ‘csrf-token’.
+\item We use ‘render\_to\_response’ function to render the template.
+\item We stick to ORM instead of writing down queries and you should do the same.
+\end{enumerate}
+
+\subsection{Urls}
+Go to ‘urls.py’ inside of ‘backend’ application. Urls file defines the way user can access any view. Nothing special, just Django protocol.
+
+We prefer sending things such as project ids right in the adress, but not as additional argument.
+
+Example:
+\begin{lstlisting}[frame=single]
+url(r'^manage_project/(?P<project_id>[0-9]+)/$', manage_project)
+\end{lstlisting}
+
+It makes things clear for everyone. If you want to map view to adress - add urlpattern and connect it to view, you just wrote.
+
+\subsection{Models}
+Django gives us the way to interact with DBMS not by writing queries, but by using ORM.
+And we use that. Every model maps to unique table in PostgreSQL.
+
+Every model change requires server restart, so don’t do it in case you are not sure if you need it. All the changes (after they’re saved) are mapped to your database. You will need ‘makemigrations’ to proceed.
+
+Be careful with this part, if you delete one line, it will surely crash the whole thing.
+
+\section{Where to get help?}
+
+Now you’re ready to configurate and administrate Teammer! If you still have some issues or you just want to contact the creators, you can always write us a message (Contact information in the title of this document).
+
+\end{document}
